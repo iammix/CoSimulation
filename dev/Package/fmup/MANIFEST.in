@@ -1,0 +1,4 @@
+include fmup/tests/csvdemo.csv
+
+recursive-include fmup/fmup-export *
+recursive-include fmup/resources *

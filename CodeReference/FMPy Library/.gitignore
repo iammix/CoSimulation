@@ -1,0 +1,34 @@
+# FMUs, SSPs, input files and report files
+*.fmu
+*.ssp
+*.csv
+*.html
+
+# source archives
+*.tar.gz
+
+# Affinity Designer documents
+*.afdesign
+
+# compiled files
+*.py[cod]
+
+# build artifacts
+build/
+cvode-*/
+dist/
+MANIFEST
+*.egg-info
+
+# test artifacts
+tests/IntegerNetwork1/
+tests/Rectifier/
+
+# PyCharm project
+.idea/
+
+# file-based project format
+*.iws
+
+# generated documentation
+_build

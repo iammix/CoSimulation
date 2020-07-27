@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription author="iammix" description="Bridge OpenSees model" fmiVersion="2.0" generationDateAndTime="2020-06-04T07:17:33+00:00" generationTool="PythonFMU 0.6.0" guid="7560fc9c-a633-11ea-99d6-0213eff46db9" modelName="Bridge" variableNamingConvention="structured">
+	<CoSimulation canBeInstantiatedOnlyOncePerProcess="false" canGetAndSetFMUstate="false" canHandleVariableCommunicationStepSize="true" canInterpolateInputs="false" canNotUseMemoryManagementFunctions="true" canSerializeFMUstate="false" modelIdentifier="Bridge" needsExecutionTool="false">
+		<SourceFiles>
+			<File name="headers/cppfmu/cppfmu_common.hpp"/>
+			<File name="headers/cppfmu/cppfmu_cs.hpp"/>
+			<File name="headers/pythonfmu/PySlaveInstance.hpp"/>
+			<File name="headers/pythonfmu/PyState.hpp"/>
+			<File name="cpp/cppfmu_cs.cpp"/>
+			<File name="cpp/fmi_functions.cpp"/>
+			<File name="cpp/pylog.cpp"/>
+			<File name="cpp/PySlaveInstance.cpp"/>
+			<File name="CMakeLists.txt"/>
+		</SourceFiles>
+	</CoSimulation>
+	<LogCategories>
+		<Category description="Log messages with fmi2Warning status." name="logStatusWarning"/>
+		<Category description="Log messages with fmi2Discard status." name="logStatusDiscard"/>
+		<Category description="Log messages with fmi2Error status." name="logStatusError"/>
+		<Category description="Log messages with fmi2Fatal status." name="logStatusFatal"/>
+		<Category description="Log all messages." name="logAll"/>
+	</LogCategories>
+	<ModelVariables/>
+	<ModelStructure/>
+</fmiModelDescription>

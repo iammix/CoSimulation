@@ -1,0 +1,1 @@
+https://openseespydoc.readthedocs.io/en/latest/src/pypi.html#install-python

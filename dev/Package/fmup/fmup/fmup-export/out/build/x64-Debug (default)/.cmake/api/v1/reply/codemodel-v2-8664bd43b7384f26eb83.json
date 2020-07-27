@@ -1,0 +1,59 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "fmup-export",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "fmup-export::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fmup-export-Debug-ae7da30eda3dae7c3778.json",
+					"name" : "fmup-export",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "B:/Google Drive/REDiEngineering/REDIdev/CoSimulation/dev/Package/fmup/fmup/fmup-export/out/build/x64-Debug (default)",
+		"source" : "B:/Google Drive/REDiEngineering/REDIdev/CoSimulation/dev/Package/fmup/fmup/fmup-export"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}
