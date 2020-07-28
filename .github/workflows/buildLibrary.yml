@@ -39,4 +39,9 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: dist
-        path: iammix/CoSimulation/LibraryBuilds/${{ matrix.build-version }}
+        path: LibraryBuilds/${{ matrix.build-version }}
+        
+    - name: Move Artifacts
+      run: |
+        cp -r /home/runner/work/CoSimulation/CoSimulation/LibraryBuilds/v1.5.9.0 LibraryBuilds
+      working-directory: CoSimulation
