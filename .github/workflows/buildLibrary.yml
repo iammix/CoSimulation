@@ -22,6 +22,5 @@ jobs:
 
     - name: Build Library
       run: |
-      
-        python dev/Package/fmup/setup.py sdist bdist_wheel
+        python setup.py sdist bdist_wheel
 
