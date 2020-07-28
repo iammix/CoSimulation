@@ -8,6 +8,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.7]
+        build-version: [1.5.9.0]
     
     steps:
     - uses: actions/checkout@v2
@@ -34,9 +35,11 @@ jobs:
         path: dev/Package/fmup/dist
 
     - uses: actions/checkout@v2
-    - name: Archive Release
-      uses: thedoctor0/zip-release@master
+    - name: Download Build to Repository
+      uses: actions/download-artifact@v2
       with:
-        filename: v1.5.9.0
-        path: dev/Package/fmup/dist
-        
+        name: dist
+        path: "Library Builds/new"
+      run: |
+        cd "Library Builds"
+        mv "Library Builds/new" "Library Builds/${{ matrix.build-version }}"
