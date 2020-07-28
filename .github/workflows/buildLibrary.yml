@@ -10,6 +10,7 @@ jobs:
         python-version: [3.7]
     
     steps:
+    - uses: actions/checkout@v2
     - name: Setup Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
@@ -20,7 +21,8 @@ jobs:
         pip install Cython
         python -m pip install --user --upgrade setuptools wheel
 
-    - name: Build Library
+    - name: Build Library1
       run: |
         python setup.py sdist bdist_wheel
       working-directory: dev/Package/fmup
+
