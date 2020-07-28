@@ -40,8 +40,8 @@ jobs:
       with:
         name: dist
         path: LibraryBuilds/${{ matrix.build-version }}
-        
+
     - name: Move Artifacts
       run: |
         cp -r /home/runner/work/CoSimulation/CoSimulation/LibraryBuilds/v1.5.9.0 LibraryBuilds
-      working-directory: CoSimulation
+      working-directory: CoSimulation/
