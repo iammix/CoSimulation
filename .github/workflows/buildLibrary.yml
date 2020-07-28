@@ -39,4 +39,6 @@ jobs:
 
       with:
         artifacts: "dist/*.whl"
+        name: Release v1.5.9.0
+        tag: v1.5.9.0
         token: ${{ secrets.GITHUB_TOKEN }}
