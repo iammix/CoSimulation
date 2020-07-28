@@ -31,3 +31,9 @@ jobs:
         name: dist
         path: dev/Package/fmup/dist
 
+    - name: Create Release
+    - uses: actions/checkout@v1
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "dist/*.whl"
+        token: ${{ secrets.GITHUB_TOKEN }}
