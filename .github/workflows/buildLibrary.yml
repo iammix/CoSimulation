@@ -22,6 +22,6 @@ jobs:
 
     - name: Build Library
       run: |
-        cd dev/Package/fmup
+        cd CoSimulation/dev/Package/fmup
         python setup.py sdist bdist_wheel
 
