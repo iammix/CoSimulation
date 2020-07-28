@@ -15,6 +15,7 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -25,6 +26,7 @@ jobs:
       run: |
         python setup.py sdist bdist_wheel
       working-directory: dev/Package/fmup
+
     - name: Archive production
       uses: actions/upload-artifact@v2
       with:
@@ -32,8 +34,8 @@ jobs:
         path: dev/Package/fmup/dist
 
     - name: Create Release
-    - uses: actions/checkout@v1
-    - uses: ncipollo/release-action@v1
+      uses: actions/checkout@v1
+      uses: ncipollo/release-action@v1
       with:
         artifacts: "dist/*.whl"
         token: ${{ secrets.GITHUB_TOKEN }}
