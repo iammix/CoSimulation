@@ -1,4 +1,4 @@
-![Build Library](https://github.com/iammix/CoSimulation/workflows/Build%20Library/badge.svg?branch=master)
+![Library Build](https://github.com/iammix/CoSimulation/workflows/Library%20Build/badge.svg)
 
 # Co-Simulation Project
 
