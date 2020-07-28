@@ -33,12 +33,10 @@ jobs:
         name: dist
         path: dev/Package/fmup/dist
 
-    - uses: actions/checkout@v1
-    - name: Create Release
-      uses: ncipollo/release-action@v1
-
+    - uses: actions/checkout@v2
+    - name: Archive Release
+      uses: thedoctor0/zip-release@master
       with:
-        artifacts: "dist, foo/*.whl"
-        name: Release v1.5.9.0
-        tag: v1.5.9.0
-        token: ${{ secrets.GITHUB_TOKEN }}
+        filename: v1.5.9.0
+        path: dev/Package/fmup/dist
+        
