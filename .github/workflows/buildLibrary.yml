@@ -45,4 +45,4 @@ jobs:
     - shell: bash
       run: |
         cp -r /home/runner/work/CoSimulation/CoSimulation/LibraryBuilds/v1.5.9.0 LibraryBuilds
-      working-directory: CoSimulation/
+      working-directory: CoSimulation
