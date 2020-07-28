@@ -21,5 +21,5 @@ jobs:
         pip install Cython
     - name: Build Library
       run: |
-        python dev/Package/fmup/setup.py sdist bdist_wheel
+        python3 dev/Package/fmup/setup.py sdist bdist_wheel
 
