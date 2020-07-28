@@ -40,6 +40,8 @@ jobs:
       with:
         name: dist
         path: "Library Builds/new"
+
+    - name: Rename Build
       run: |
         cd "Library Builds"
         mv "Library Builds/new" "Library Builds/${{ matrix.build-version }}"
