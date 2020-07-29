@@ -32,3 +32,8 @@ jobs:
       with:
         name: dist
         path: dev/Package/fmup/dist
+    - name: Download Artifact
+      uses: actions/download-artifact@v2
+      with:
+          name: dist
+          save: ~/LibraryBuilds
