@@ -477,26 +477,14 @@ class ModelBase:
                                              options)
 
     def estimate_options(self, algorithm='SciEstAlg'):
-        """
-        Get an instance of the estimation options class, filled with default
-        values. If called without argument then the options class for the
-        default estimation algorithm will be returned.
 
-        Parameters::
-
-            algorithm --
-                The algorithm for which the options class should be fetched.
-                Possible values are: 'SciEstAlg'.
-                Default: 'SciEstAlg'
-
-        Returns::
-
-            Options class for the algorithm specified with default values.
-        """
         return self._default_options('pyfmi.fmi_algorithm_drivers', algorithm)
 
     def get_log_filename(self):
         return decode(self._fmu_log_name)
+
+
+
 
     def get_log_file_name(self):
         logging.warning(
