@@ -156,6 +156,6 @@ class ModelBase:
                 self._set(variable_name[i], value[i])
     def get(self, variable_name):
         pass
-    
+
 
 
