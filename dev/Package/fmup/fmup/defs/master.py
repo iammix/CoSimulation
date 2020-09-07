@@ -593,6 +593,31 @@ class FMUModelBase(ModelBase):
         self._fmu_temp_dir = < char * > FMIL.malloc((FMIL.strlen(fmu_temp_dir) + 1) * sizeof(char))
         FMIL.strcpy(self._fmu_temp_dir, fmu_temp_dir)
 
+        if not fmu_full_path.endswith(".fmu"):
+            raise FMUException("FMUModel must be instantiated with an FMU file")
+
+        # Specify FMI related callbacks
+        self.callBackFunctions.logger = FMIL.fmi1_log_forwarding
+        self.callBackFunctions.allocateMemory = FMIL.calloc
+        self.callBackFunctions.freeMemory = FMIL.free
+        self.callBackFunctions.stepFinished = NULL
+
+        self.context = FMIL.fmi_import_allocate_context( & self.callbacks)
+        self._allocated_context = 1
+
+        fmu_full_path = encode(fmu_full_path)
+
+        if _unzipped_dir:
+            version = FMIL.fmi_version_1_enu
+        self._version = version
+
+        if version == FMIL.fmi_version_unknown_enu:
+            last_error = decode(FMIL.jm_get_last_error(& self.callbacks))
+            if self.callbacks.log_level >= FMIL.jm_log_level_error:
+                raise FMUException("The FMI version could not be determined" + last_error)
+
+
+
 
 
 
