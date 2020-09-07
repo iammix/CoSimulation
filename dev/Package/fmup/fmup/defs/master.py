@@ -27,7 +27,7 @@ from pyfmi.common.core import create_temp_file, delete_temp_file
 # from pyfmi.common.core cimport BaseModel
 
 # from pyfmi.common import python3_flag, encode, decode
-from pyfmi.fmi_util import cpr_seed, enable_caching, python3_flag
+from pyfmi.fmi_util import cpr_seed, enable_cach3ing, python3_flag
 from pyfmi.fmi_util cimport
 
 encode, decode
@@ -297,9 +297,208 @@ class ModelBase:
         if file_name is None:
             file_name = self.get_log_filename()[:-3] + "xml"
 
+        if isinstance(self, FMUModeCS1):
+            module_name = "Slave"
+        else:
+            module_name = "Model"
+
+        extract_xml_log(file_name, self.get_log_filename(), module_name)
 
 
+def _log_open(self):
+    if self.file_object:
+        return True
+    else:
+        return False
 
+def _open_log_file(self):
+    if self._fmu_log_name != NULL:
+        self.file_object = open(self._fmu_log_name, 'a')
+
+def _close_log_file(self):
+    if self.file_object:
+        self.file_object.close()
+        self.file_object = None
+
+def append_log_message(self, module, log_level, message):
+    if self._additional_logger:
+        self._additional_logger(module, log_level, message)
+
+    if self._fmu_log_name != NULL:
+        if self.file_object:
+            self.file_object.write("FMIL: module = %s, log level %d: %s\n" % (module, log_level, message))
+        else:
+            with open(self._fmu_log_name, 'a') as file:
+                file.write("FMIL: module = %s, log level = %d: %s\n" % (module, log_level, message))
+    else:
+        self._log.append([module, log_level, message])
+
+
+def set_max_log_size(self, number_of_characters):
+    self._max_log_size = number_of_characters
+
+def get_max_log_size(self):
+    return self._max_log_size
+
+def get_log_level(self):
+    return self.callbacks.log_level
+
+def set_additional_logger(self, additional_logger):
+    self._additional_logger = additional_logger
+
+def _convert_filter(self, expression):
+
+    regexp = []
+    if isinstance(expression, str):
+        regex = fnmatch.translate(expression)
+        regexp = [re.compile(regex)]
+    elif isinstance(expression, list):
+        regex = ""
+        for i in expression:
+            regex = regex + fnmatch.translate(i) + "|"
+        regexp = [re.compile(regex[:-1])]
+    else:
+        raise FMUException("Unknown input.")
+
+class FMUException(Exception):
+    pass
+
+class TimeLimitExceeded(FMUException):
+    pass
+
+class PyEventInfo():
+    pass
+
+
+class ScalarVariable2:
+
+
+    def __init__(self, name, value_reference, type, description="",
+                 variability=FMIL.fmi2_variability_enu_unknown,
+                 casuality=FMIL.fmi2_causality_enu_unknown,
+                 alias = FMIL.fmi2_variable_is_not_alias,
+                 initial=FMIL.fmi2_initial_enu_unknown):
+
+        self._name = name
+        self._value_reference = value_reference
+        self._type = type
+        self._description = description
+        self._variability = variability
+        self._causality = causality
+        self._alias = alias
+        self._initial = initial
+
+
+    def _get_name(self):
+
+        return self._name
+
+    name = property(_get_name)
+
+    def _get_value_reference(self):
+
+        return self._value_reference
+    value_reference = property(_get_value_reference)
+
+    def _get_type(self):
+        return self._type
+    type = property(_get_type)
+
+    def _get_description(self):
+
+        return self._description
+
+    def _get_variability(self):
+
+        return self._variability
+
+    variability = property(_get_variability)
+
+
+    def _get_causality(self):
+
+        return self._variability
+
+    causality = property(_get_causality)
+
+    def _get_alias(self):
+        return self._alias
+
+    alias = property(_get_alias)
+
+    def _get_initial(self):
+
+        return self._initial
+    initial = property(_get_initial)
+
+
+class DeclaredType2:
+
+    def __init__(self, name, description='', quantity=""):
+        self._name = name
+        self._description = description
+        self._quantity = quantity
+
+    def _get_name(self):
+
+        return self._name
+
+    name = property(_get_name)
+
+    def _get_description(self):
+
+        return self._description
+    description = property(_get_description)
+
+
+class EnumerationType2(DeclaredType2):
+
+    def __init__(self, name, description="", quantity="", items=None):
+        DeclaredType2.__init__(self, name, description, quantity)
+
+        self._items = items
+
+    def _get_quantity(self):
+        return self._quantity
+    quantity = property(_get_quantity)
+
+    def _get_items(self):
+        return self._items
+
+    items = property(_get_items)
+
+
+class IntegerType2(DeclaredType2):
+
+    def __init__(self, name, description="", quantity="", min=-N.inf, max=N.inf):
+        DeclaredType2.__init__(self, name, description, quantity)
+
+        self.min = min
+        self.max = max
+
+    def _get_max(self):
+        return self.max
+
+    max = property(_get_max)
+
+    def _get_min(self):
+        return self._min
+
+    min = property(_get_min)
+
+class RealType2(DeclaredType2):
+
+    def __init__(self, name, description= "", quantity="", min=-N.inf, max=N.inf, nominal=1.0, unbounded=False,
+                 relative_quantity=False, display_unit="", unit=""):
+        DeclaredType2.__init__(self, name, description, quantity)
+
+        self._min = min
+        self._max = max
+        self._nominal = nominal
+        self._unbounded = unbounded
+        self._relative_quantity = relative_quantity
+        self._display_unit = display_unit
+        self._unit = unit
 
 
 
