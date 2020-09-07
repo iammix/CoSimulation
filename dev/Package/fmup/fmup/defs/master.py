@@ -500,6 +500,46 @@ class RealType2(DeclaredType2):
         self._display_unit = display_unit
         self._unit = unit
 
+    def _get_max(self):
+
+        return self._max
+
+    max = property(_get_max)
+
+    def _get_min(self):
+        return self._min
+
+    min = property(_get_min)
+
+    def _get_nominal(self):
+
+        return self._nominal
+
+    nominal = property(_get_nominal)
+
+    def _get_unbounded(self):
+
+        return self._unbounded
+    unbounded = property(_get_unbounded)
+
+    def _get_relative_quantity(self):
+
+        return self._relative_quantity
+
+    relative_quantity = property(_get_relative_quantity)
+
+    def _get_display_unit(self):
+
+        return self._display_unit
+    display_unit = property(_get_display_unit)
+
+    def _get_unit(self):
+        return self._unit
+
+    unit = property(_get_unit)
+
+
+
 
 
 
