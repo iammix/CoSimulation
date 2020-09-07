@@ -538,6 +538,61 @@ class RealType2(DeclaredType2):
 
     unit = property(_get_unit)
 
+class FMUState2:
+    def __init__(self):
+        self.fmu_state = NULL
+        self._internal_state_variables = {'initialized_fmu': None,
+                                          'has_entered_init_mode': None,
+                                          'time': None,
+                                          'callback_log_level': None}
+
+class FMUModelBase(ModelBase):
+    def __init__(self, fmu, path='.', enable_logging=None, log_file, name="", log_level=FMI_DEFAULT_LOG_LEVEL,
+                 _unzipped_dir=None, _connect_dll=True, NULL=None):
+        ModelBase.__init__(self)
+
+        self._log = []
+
+        self._allocated_context = 0
+        self._allocated_dll = 0
+        self._allocated_xml = 0
+        self._allocated_fmu = 0
+        self._allocated_fmu = 0
+        self._instantiated_fmu =0
+        self._allocated_list = False
+        self._fmu_temp_dir = NULL
+        self._fmu_log_name = NULL
+
+        self.callbacks.malloc = FMIL.malloc
+        self.callbacks.calloc = FMIL.calloc
+        self.callbacks.realloc = FMIL.realloc
+        self.callbacks.free = FMIL.free
+        self.callbacks.logger = importlogger
+        self.callbacks.context = < void * > self
+
+        if enable_logging == None:
+            if log_level >= FMIL.jm_log_level_nothing and log_level <= FMIL.jm_log_level_all:
+                if log_level == FMIL.jm_log_level_nothing:
+                    enable_logging = False
+
+                else:
+                    enable_logging = True
+
+                self.callbacks.log_level = log_level
+            else:
+                raise FMUException("The log level must be between %d and %d" % (FMIL.jm_log_level_nothing, FMIL.jm_log_level_all))
+        else:
+            raise FMUException("The attribute 'enable_logging' is deprecated. Please use 'log_level' instead. Setting 'log_level' to INFO....")
+            self.callbacks.log_level = FMIL.jm_log_level_info if enable_logging else FMIL.jm_log_level_error
+
+        fmu_full_path = os.path.abspath(os.path.join(path, fmu))
+        if _unzipped_dir:
+            fmu_temp_dir = encode(_unzipped_dir)
+        else:
+            fmu_temp_dir = encode(create_temp_dir())
+        self._fmu_temp_dir = < char * > FMIL.malloc((FMIL.strlen(fmu_temp_dir) + 1) * sizeof(char))
+        FMIL.strcpy(self._fmu_temp_dir, fmu_temp_dir)
+
 
 
 
