@@ -33,5 +33,5 @@ std::unique_ptr<cs_slave> cs_fmu::new_instance(const bool visible, const bool lo
 
     auto c = lib->instantiate(modelIdentifier, fmi2CoSimulation, guid(),
                               resource_->resource_path(), visible, loggingOn);
-    return std::make_unique<cs_slave>(c, resource_, lib, modelDescription_)
+    return std::make_unique<cs_slave>(c, resource_, lib, modelDescription_);
 }
