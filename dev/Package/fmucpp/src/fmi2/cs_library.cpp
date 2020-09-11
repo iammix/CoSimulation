@@ -77,6 +77,34 @@ bool cs_library::get_real_status(
 }
 
 
+bool cs_library::get_integer_status(
+        fmi2Component c,
+        const fmi2StatusKind s,
+        fmi2Integer& value)
+{
+    return update_status_and_return_true_if_ok(
+            fmi2GetIntegerStatus_(c, s, &value));
+}
+
+bool cs_library::get_boolean_status(
+        fmi2Component c,
+        const fmi2StatusKind s,
+        fmi2Boolean& value)
+{
+    return update_status_and_return_true_if_ok(
+            fmi2GetBooleanStatus_(c, s, &value));
+}
+
+
+bool cs_library::get_string_status(
+        fmi2Component c,
+        const fmi2StatusKind s,
+        fmi2String& value)
+{
+    return update_status_and_return_true_if_ok(
+            fmi2GetStringStatus_(c, s, &value));
+}
+
 
 
 
