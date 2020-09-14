@@ -1,14 +1,14 @@
-#include <fmi4cpp/fmi2/fmi2_library.hpp>
-#include <fmi4cpp/fs_portability.hpp>
-#include <fmi4cpp/library_helper.hpp>
-#include <fmi4cpp/mlog.hpp>
-#include <fmi4cpp/tools/os_util.hpp>
+#include <fmicpp/fmi2/fmi2_library.hpp>
+#include <fmicpp/fs_portability.hpp>
+#include <fmicpp/library_helper.hpp>
+#include <fmicpp/mlog.hpp>
+#include <fmicpp/tools/os_util.hpp>
 
 #include <cstdarg>
 #include <sstream>
 
-using namespace fmi4cpp;
-using namespace fmi4cpp::fmi2;
+using namespace fmicpp;
+using namespace fmicpp::fmi2;
 
 namespace
 {
