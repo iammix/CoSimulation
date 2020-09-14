@@ -231,6 +231,37 @@ bool fmi2_library::write_integer(
     return update_status_and_return_true_if_ok(fmi2SetInteger_(c, vr.data(), vr.size(), values.data()));
 }
 
+bool fmi2_library::write_real(
+    fmi2Component c,
+    fmi2ValueReference vr,
+    const fmi2Real& value)
+{
+    return update_status_and_return_true_if_ok(fmi2SetReal_(c, &vr, 1, &value));
+}
+
+bool fmi2_library::write_real(
+    fmi2Component c,
+    const std::vector<fmi2ValueReference>& vr,
+    const std::vector<fmi2Real>& values)
+{
+    return update_status_and_return_true_if_ok(fmi2SetReal_(c, vr.data(), vr.size(), values.data()));
+}
+
+bool fmi2_library::write_string(
+    fmi2Component c,
+    fmi2ValueReference vr,
+    fmi2String& value)
+{
+    return update_status_and_return_true_if_ok(fmi2SetString_(c, &vr, 1, &value));
+}
+
+bool fmi2_library::write_string(
+    fmi2Component c,
+    const std::vector<fmi2ValueReference>& vr,
+    const std::vector<fmi2String>& values)
+{
+    return update_status_and_return_true_if_ok(fmi2SetString_(c, vr.data(), vr.size(), values.data()));
+}
 
 
 
