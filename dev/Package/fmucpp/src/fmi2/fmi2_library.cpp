@@ -89,6 +89,61 @@ fmi2_library::fmi2_library(const std::string& modelIdentifier, const std::shared
     fmi2FreeInstance_ = load_function<fmi2FreeInstanceTYPE*>(handle_, "fmi2FreeInstance");
 }
 
+bool fmi2_library::update_status_and_return_true_if_ok(fmi2Status status)
+{
+    lastStatus_ = status;
+    return status == fmi2OK;
+}
+
+fmi2Status fmi2_library::last_status() const
+{
+    return lastStatus_;
+}
+
+fmi2String fmi2_library::get_version() const
+{
+    return fmi2GetVersion_();
+}
+
+fmi2String fmi2_library::get_types_platform() const
+{
+    return fmi2GetTypesPlatform_();
+}
+
+fmi2Component fmi2_library::instantiate(const std::string& instanceName, const fmi2Type type,
+    const std::string& guid, const std::string& resourceLocation,
+    bool visible, bool loggingOn)
+{
+    fmi2Component c = fmi2Instantiate_(instanceName.c_str(), type, guid.c_str(),
+    resourceLocation.c_str(), &callback, visible, loggingOn);
+
+    if (c == nullptr) {
+        const std::string msg = "UNABLE TO INSTANTIATE FMU";
+        throw std::runtime_error(msg);
+    }
+    retunc c;
+}
+
+
+
+bool fmi2_library::set_debug_logging(fmi2Component c, bool loggingOn,
+    std::vector<fmi2String> categories)
+{
+    return update_status_and_return_true_if_ok(fmi2SetDebugLogging_(c, loggingOn, categories.size(), categories.data()));
+}
+
+
+bool fmi2_library::setup_experiment(fmi2Component c, double tolerance, double startTime, double stopTime)
+{
+    bool stopDefined = (stopTime > startTime);
+    bool toleranceDefined = (tolerance > 0);
+    return update_status_and_return_true_if_ok(fmi2SetupExperiment_(c, toleranceDefined, tolerance, startTime, stopDefined, stopTime));
+}
+
+
+
+
+
 
 
 
