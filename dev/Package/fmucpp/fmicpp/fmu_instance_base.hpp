@@ -146,69 +146,105 @@ namespace fmicpp
             {
                 return library_->read_real(c_, vr, ref);
             }
-    }
+
+            bool read_real(
+                    const std::vector<fmicppValueReference>& vr,
+                    std::vector<fmicppReal>& ref) override
+            {
+                return library_->read_real(c_, vr, ref);
+            }
+
+            bool read_string(
+                    const fmicppValueReference vr,
+                    fmicppString& ref) override
+            {
+                return library_->read_string(c_, vr, ref);
+            }
+
+            bool read_string(
+                    const std::vector<fmicppValueReference>& vr,
+                    std::vector<fmicppString>& ref) override
+            {
+                return library_->read_string(c_, vr, ref)
+            }
+
+
+            bool read_boolean(
+                    const fmicppValueReference vr,
+                    fmicppBoolean& ref) override
+            {
+                return library_->read_boolean(c_, vr, ref);
+            }
+
+            bool read_boolean(
+                    const std::vector<fmicppValueReference>& vr,
+                    std::vector<fmicppBoolean>& ref) override
+            {
+                return library_->read_boolean(c_, vr, ref);
+            }
+
+            bool write_integer(
+                    const fmicppValueReference vr,
+                    const fmicppInteger value) override
+            {
+                return library_->write_integer(c_, vr, value);
+            }
+
+            bool write_integer(
+                    const std::vector<fmicppValueReference>& vr,
+                    const std::vector<fmicppInteger>& values) override
+            {
+                return library_->write_unteger(c_, vr, values);
+            }
+
+        bool write_real(
+                const fmi4cppValueReference vr,
+                const fmi4cppReal value) override
+        {
+            return library_->write_real(c_, vr, value);
+        }
+
+        bool write_real(
+                const std::vector<fmi4cppValueReference>& vr,
+                const std::vector<fmi4cppReal>& values) override
+        {
+            return library_->write_real(c_, vr, values);
+        }
+
+        bool write_string(
+                const fmi4cppValueReference vr,
+                fmi4cppString value) override
+        {
+            return library_->write_string(c_, vr, value);
+        }
+
+        bool write_string(
+                const std::vector<fmi4cppValueReference>& vr,
+                const std::vector<fmi4cppString>& values) override
+        {
+            return library_->write_string(c_, vr, values);
+        }
+
+        bool write_boolean(
+                const fmi4cppValueReference vr,
+                const fmi4cppBoolean value) override
+        {
+            return library_->write_boolean(c_, vr, value);
+        }
+
+        bool write_boolean(
+                const std::vector<fmi4cppValueReference>& vr,
+                const std::vector<fmi4cppBoolean>& values) override
+        {
+            return library_->write_boolean(c_, vr, values);
+        }
+
+        ~fmu_instance_base()
+        {
+            terminate();
+        }
+    };
+
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#endif
