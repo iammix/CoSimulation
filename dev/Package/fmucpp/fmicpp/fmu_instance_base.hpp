@@ -67,8 +67,128 @@ namespace fmicpp
             }
             bool terminate() override
             {
-                return
+                return terminate(true);
+            }
+
+            bool terminate(boo freeInstance)
+            {
+                if (!this->terminated_) {
+                    this->terminated_ = true;
+                    if (!library_ ->terminate(c_)) {
+                        return false;
+                    }
+                    this->free_instance();
+                }
+                return true;
+            }
+            void free_instance()
+            {
+                if (!instanceFreed_) {
+                    instanceFreed_ = true;
+                    library_->free_instance(c_);
+                    c_ = nullptr;
+                }
+            }
+
+            bool get_fmu_state(fmicppFMUstate& state) override
+            {
+                return library_->get_fmu_state(c_, state);
+            }
+
+            bool set_fmu_state(fmicppFMUstate& state) override
+            {
+                return library_->set_fmu_state(c_, state);
+            }
+
+            bool free_fmu_state(fmicppFMUstate& state) override
+            {
+                return library_->free_fmu_state(c_, state);
+            }
+
+
+            bool get_serialized_fmu_state_size(fmicppFMUstate state, size_t& size) const
+            {
+                return library_->get_serialized_fmu_state_size(c_, state, size);
+            }
+
+            bool serialize_fmu_state(
+                    const fmicppFMUstate& state,
+                    std::vector<fmicppByte>& serializedState) override
+            {
+                return library_->serialize_fmu_state(c_, state, serializedState);
+            }
+
+            bool get_directional_derivative(
+                    const std::vector<fmicppValueReference>&vUnknownRef,
+                    const std::vector<fmicppValueReference>&vKnownRef,
+                    const std::vector<fmicppReal>& dvKnownRef,
+                    std::vector<fmicppReal>& dvUnknownRef) override
+            {
+                return library_->get_directional_derivatice(c_, vUnknownRef, vKnownRef,)
             }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
