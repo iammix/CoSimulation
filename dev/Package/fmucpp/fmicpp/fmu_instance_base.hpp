@@ -198,43 +198,43 @@ namespace fmicpp
             }
 
         bool write_real(
-                const fmi4cppValueReference vr,
-                const fmi4cppReal value) override
+                const fmicppValueReference vr,
+                const fmicppReal value) override
         {
             return library_->write_real(c_, vr, value);
         }
 
         bool write_real(
-                const std::vector<fmi4cppValueReference>& vr,
-                const std::vector<fmi4cppReal>& values) override
+                const std::vector<fmicppValueReference>& vr,
+                const std::vector<fmicppReal>& values) override
         {
             return library_->write_real(c_, vr, values);
         }
 
         bool write_string(
-                const fmi4cppValueReference vr,
-                fmi4cppString value) override
+                const fmicppValueReference vr,
+                fmicppString value) override
         {
             return library_->write_string(c_, vr, value);
         }
 
         bool write_string(
-                const std::vector<fmi4cppValueReference>& vr,
-                const std::vector<fmi4cppString>& values) override
+                const std::vector<fmicppValueReference>& vr,
+                const std::vector<fmicppString>& values) override
         {
             return library_->write_string(c_, vr, values);
         }
 
         bool write_boolean(
-                const fmi4cppValueReference vr,
-                const fmi4cppBoolean value) override
+                const fmicppValueReference vr,
+                const fmicppBoolean value) override
         {
             return library_->write_boolean(c_, vr, value);
         }
 
         bool write_boolean(
-                const std::vector<fmi4cppValueReference>& vr,
-                const std::vector<fmi4cppBoolean>& values) override
+                const std::vector<fmicppValueReference>& vr,
+                const std::vector<fmicppBoolean>& values) override
         {
             return library_->write_boolean(c_, vr, values);
         }
