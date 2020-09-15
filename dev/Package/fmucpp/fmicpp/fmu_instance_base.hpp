@@ -124,7 +124,27 @@ namespace fmicpp
                     const std::vector<fmicppReal>& dvKnownRef,
                     std::vector<fmicppReal>& dvUnknownRef) override
             {
-                return library_->get_directional_derivatice(c_, vUnknownRef, vKnownRef,)
+                return library_->get_directional_derivatice(c_, vUnknownRef, vKnownRef, dvKnownRef, dvUnknownRef);
+            }
+
+            bool read_integer(
+                    const fmicppValueReference vr,
+                    fmicppInteger& ref) override
+            {
+                return library_->read_integer(c_, vr, ref);
+            }
+            bool read_integer(
+                    const std::vector<fmicppValueReference>& vr,
+                    std::vector<fmicppInteger>& ref) override
+            {
+                return library_->read_integer(c_, vr, ref);
+            }
+
+            bool read_real(
+                    const fmicppValueReference vr,
+                    fmicppReal& ref) override
+            {
+                return library_->read_real(c_, vr, ref);
             }
     }
 }
