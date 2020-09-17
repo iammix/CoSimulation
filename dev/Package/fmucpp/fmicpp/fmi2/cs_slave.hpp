@@ -37,6 +37,9 @@ namespace fmicpp::fmi2
         bool read_integer(const std::vector<fmi2ValueReference>& vr, std::vector<fmi2Integer>& ref) override;
 
         bool read_real(fmi2ValueReference vr, fmi2Real& ref) override;
+        bool read_real(const std::vector<fmi2ValueReference>& vr, std::vector<fmi2Real>& ref) override;
+
+        
     };
 }
 
