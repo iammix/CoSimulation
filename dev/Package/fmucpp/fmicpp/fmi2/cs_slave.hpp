@@ -51,9 +51,20 @@ namespace fmicpp::fmi2
         bool write_string(fmi2ValueReference vr, fmi2String& value) override;
         bool write_string(const std::vector<fmi2ValueReference>& vr, const std::vector<fmi2String>& values) override;
 
+        bool write_boolean(fmi2ValueReference vr, fmi2Boolean& value) override;
+        bool write_boolean(const std::vector<fmi2ValueReference>& vr, const std::vector<fmi2Boolean>& values) override;
 
+        bool get_fmu_state(fmi2FMUstate& state) override;
+        bool set_fmu_state(fmi2FMUstate state) override;
+        bool free_fmu_state(fmi2FMUstate& state) override;
 
-        
+        bool serialize_fmu_state(const fmi2FMUstate& state, std::vector<fmi2Byte>& serializedState) override;
+        bool de_serialize_fmu_state(fmi2FMUstate& state, const std::vector<fmi2Byte>& serializedState) override;
+
+        bool get_directional_derivative(const std::vector<fmi2ValueReference>& vUnknownRef,
+                                        const std::vector<fmi2ValueReference>& vKnownRef,
+                                        const std::vector<fmi2Real>& dvKnownRef,
+                                        std::vector<fmi2Real>& dvUnknownRef) override;
     };
 }
 
