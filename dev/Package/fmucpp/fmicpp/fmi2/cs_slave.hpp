@@ -39,6 +39,20 @@ namespace fmicpp::fmi2
         bool read_real(fmi2ValueReference vr, fmi2Real& ref) override;
         bool read_real(const std::vector<fmi2ValueReference>& vr, std::vector<fmi2Real>& ref) override;
 
+        bool read_boolean(fmi2ValueReference vr, fmi2Boolean& ref) override;
+        bool read_boolean(const std::vector<fmi2ValueReference>& vr, std::vector<fmi2Boolean>& ref) override;
+
+        bool write_integer(fmi2ValueReference vr, fmi2Integer& value) override;
+        bool write_integer(const std::vector<fmi2ValueReference>& vr, const std::vector<fmi2Ineger>& values) override;
+
+        bool write_real(fmi2ValueReference vr, fmi2Real& value) override;
+        bool write_real(const std::vector<fmi2ValueReference>& vr, const std::vector<fmi2Real>& values) override;
+
+        bool write_string(fmi2ValueReference vr, fmi2String& value) override;
+        bool write_string(const std::vector<fmi2ValueReference>& vr, const std::vector<fmi2String>& values) override;
+
+
+
         
     };
 }
