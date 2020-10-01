@@ -6,7 +6,15 @@
 #include <fmicpp/fmi2/xml/model_structure.hpp>
 #include <fmicpp/fmi2/xml/model_variable.hpp>
 
+#include <memory>
+#include <optional>
+#include <string>
 
+
+namespace fmicpp::fmi2
+{
+
+}
 
 
 

@@ -65,7 +65,6 @@ class BridgefmuV4(Fmi2Slave):
         ops.database('File', "{}/OpenSees_Model".format(self.dir_of_database))
 
         # CONSTRUCT MODEL
-
         element_length: float = self.length / self.number_of_elements
         temp = 0
         for i in range(1, self.node_number + 1):
