@@ -1,0 +1,1227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"
+ href="http://www.altairhyperworks.com/motionsolve-xml/motionsolve_v1.xsl"?>
+<MultiBodySystem
+ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+ xs:noNamespaceSchemaLocation="http://www.altairhyperworks.com/motionsolve-xml/motionsolve_v1.xsd"
+     hw_version          = "2019.1"
+     build_number        = ".0.20">
+ <Messaging
+     log_option          = "Overwrite"
+ />
+<!--
+Model Hierarchy
+    Model
+        Misc
+-->
+ <Model>
+  <Param_Simulation
+     constr_tol          = "1.0000E-10"
+     implicit_diff_tol   = "1.0000E-06"
+     nr_converg_ratio    = "0.09"
+     collision_engine    = "PCM"
+     linsolver           = "HARWELL"
+  />
+  <Param_Transient
+     integrator_type     = "DSTIFF"
+     integr_tol          = "1.0000E-05"
+     h_max               = "0.0001"
+     h0_max              = "1.0000E-08"
+     h_min               = "1.0000E-06"
+     max_order           = "5"
+     vel_tol_factor      = "1000."
+     dae_constr_tol      = "1.0000E-05"
+     dae_corrector_maxit = "4"
+     dae_corrector_minit = "0"
+     dae_index           = "3"
+     dae_vel_ctrl        = "FALSE"
+  />
+  <Param_Static
+     method              = "FIM_D"
+     max_error           = "0.0001"
+     max_imbalance       = "0.0001"
+     stability           = "1.0000E-10"
+     max_ke_tol          = "1.0000E-05"
+     max_dq_tol          = "0.001"
+     max_num_iter        = "75"
+  />
+  <Param_Linear
+     anim_scale          = "1."
+     write_simulinkmdl   = "NO"
+     write_matlabfiles   = "NO"
+     write_eig_info      = "YES"
+  />
+  <Param_Unit
+     force_unit          = "NEWTON"
+     mass_unit           = "KILOGRAM"
+     length_unit         = "METER"
+     time_unit           = "SECOND"
+  />
+<!-- MODEL.Global_Frame -->
+  <Reference_Marker
+     id                  = "30101010"
+     label               = "Global Frame"
+     full_label          = "Model-Global Frame"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.o_disp_bogie.i -->
+  <Reference_Marker
+     id                  = "30101011"
+     label               = "disp_bogie-Marker I"
+     full_label          = "Model-disp_bogie-Marker I"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.o_disp_bogie.j -->
+  <Reference_Marker
+     id                  = "30101012"
+     label               = "disp_bogie-Marker J"
+     full_label          = "Model-disp_bogie-Marker J"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.o_vel_bogie.i -->
+  <Reference_Marker
+     id                  = "30101013"
+     label               = "vel_bogie-Marker I"
+     full_label          = "Model-vel_bogie-Marker I"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.o_vel_bogie.j -->
+  <Reference_Marker
+     id                  = "30101014"
+     label               = "vel_bogie-Marker J"
+     full_label          = "Model-vel_bogie-Marker J"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.o_disp_ws.i -->
+  <Reference_Marker
+     id                  = "30101015"
+     label               = "disp_ws-Marker I"
+     full_label          = "Model-disp_ws-Marker I"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.o_disp_ws.j -->
+  <Reference_Marker
+     id                  = "30101016"
+     label               = "disp_ws-Marker J"
+     full_label          = "Model-disp_ws-Marker J"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.o_vel_ws.i -->
+  <Reference_Marker
+     id                  = "30101017"
+     label               = "vel_ws-Marker I"
+     full_label          = "Model-vel_ws-Marker I"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.o_vel_ws.j -->
+  <Reference_Marker
+     id                  = "30101018"
+     label               = "vel_ws-Marker J"
+     full_label          = "Model-vel_ws-Marker J"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.o_disp_ws1.i -->
+  <Reference_Marker
+     id                  = "30101019"
+     label               = "disp_ws1-Marker I"
+     full_label          = "Model-disp_ws1-Marker I"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.b_ws.lprf -->
+  <Reference_Marker
+     id                  = "30102001"
+     label               = "ws-Marker LPRF"
+     full_label          = "Model-ws-Marker LPRF"
+     body_id             = "30102"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.b_ws.cm -->
+  <Reference_Marker
+     id                  = "30102020"
+     label               = "ws-Marker CM"
+     full_label          = "Model-ws-Marker CM"
+     body_id             = "30102"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.j_orient_rear.joint_i -->
+  <Reference_Marker
+     id                  = "30102021"
+     label               = "Orient_Rear-Marker I"
+     full_label          = "Model-Orient_Rear-Marker I"
+     body_id             = "30102"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.sd_sd_left.i -->
+  <Reference_Marker
+     id                  = "30102040"
+     label               = "sd_left-Marker I"
+     full_label          = "Model-sd_left-Marker I"
+     body_id             = "30102"
+     body_type           = "RigidBody"
+     pos_x               = "0."
+     pos_y               = "0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.m_0 -->
+  <Reference_Marker
+     id                  = "30102041"
+     label               = "Marker 0"
+     full_label          = "Model-Marker 0"
+     body_id             = "30102"
+     body_type           = "RigidBody"
+     pos_x               = "0."
+     pos_y               = "0.5"
+     pos_z               = "0."
+     a00                 = "0."
+     a10                 = "1."
+     a20                 = "0."
+     a02                 = "1."
+     a12                 = "0."
+     a22                 = "0."
+  />
+<!-- MODEL.sd_sdnew.j -->
+  <Reference_Marker
+     id                  = "30102042"
+     label               = "sdnew_left-Marker J"
+     full_label          = "Model-sdnew_left-Marker J"
+     body_id             = "30102"
+     body_type           = "RigidBody"
+     pos_x               = "0."
+     pos_y               = "0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.sd_sdnew2_left.j -->
+  <Reference_Marker
+     id                  = "30102043"
+     label               = "sdnew2_left-Marker J"
+     full_label          = "Model-sdnew2_left-Marker J"
+     body_id             = "30102"
+     body_type           = "RigidBody"
+     pos_x               = "0."
+     pos_y               = "0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.sd_sd_right.i -->
+  <Reference_Marker
+     id                  = "30102050"
+     label               = "sd_right-Marker I"
+     full_label          = "Model-sd_right-Marker I"
+     body_id             = "30102"
+     body_type           = "RigidBody"
+     pos_x               = "0."
+     pos_y               = "-0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.m_1 -->
+  <Reference_Marker
+     id                  = "30102051"
+     label               = "Marker 1"
+     full_label          = "Model-Marker 1"
+     body_id             = "30102"
+     body_type           = "RigidBody"
+     pos_x               = "0."
+     pos_y               = "-0.5"
+     pos_z               = "0."
+     a00                 = "0."
+     a10                 = "-1."
+     a20                 = "0."
+     a02                 = "-1."
+     a12                 = "0."
+     a22                 = "0."
+  />
+<!-- MODEL.sd_sdnew_right.j -->
+  <Reference_Marker
+     id                  = "30102052"
+     label               = "sdnew_right-Marker J"
+     full_label          = "Model-sdnew_right-Marker J"
+     body_id             = "30102"
+     body_type           = "RigidBody"
+     pos_x               = "0."
+     pos_y               = "-0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.sd_sdnew2_right.j -->
+  <Reference_Marker
+     id                  = "30102053"
+     label               = "sdnew2_right-Marker J"
+     full_label          = "Model-sdnew2_right-Marker J"
+     body_id             = "30102"
+     body_type           = "RigidBody"
+     pos_x               = "0."
+     pos_y               = "-0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.b_ws1.lprf -->
+  <Reference_Marker
+     id                  = "30103001"
+     label               = "ws1-Marker LPRF"
+     full_label          = "Model-ws1-Marker LPRF"
+     body_id             = "30103"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.b_ws1.cm -->
+  <Reference_Marker
+     id                  = "30103030"
+     label               = "ws1-Marker CM"
+     full_label          = "Model-ws1-Marker CM"
+     body_id             = "30103"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "0."
+     pos_z               = "0."
+  />
+<!-- MODEL.j_orient_front.joint_i -->
+  <Reference_Marker
+     id                  = "30103031"
+     label               = "Orient_Front-Marker I"
+     full_label          = "Model-Orient_Front-Marker I"
+     body_id             = "30103"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "0."
+     pos_z               = "0."
+  />
+<!-- MODEL.sd_sd_left1.i -->
+  <Reference_Marker
+     id                  = "30103060"
+     label               = "sd_left1-Marker I"
+     full_label          = "Model-sd_left1-Marker I"
+     body_id             = "30103"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.m_2 -->
+  <Reference_Marker
+     id                  = "30103061"
+     label               = "Marker 2"
+     full_label          = "Model-Marker 2"
+     body_id             = "30103"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "0.5"
+     pos_z               = "0."
+     a00                 = "0."
+     a10                 = "1."
+     a20                 = "0."
+     a02                 = "1."
+     a12                 = "0."
+     a22                 = "0."
+  />
+<!-- MODEL.sd_sdnew_left1.j -->
+  <Reference_Marker
+     id                  = "30103062"
+     label               = "sdnew_left1-Marker J"
+     full_label          = "Model-sdnew_left1-Marker J"
+     body_id             = "30103"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.sd_sdnew2_left1.j -->
+  <Reference_Marker
+     id                  = "30103063"
+     label               = "sdnew2_left1-Marker J"
+     full_label          = "Model-sdnew2_left1-Marker J"
+     body_id             = "30103"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.sd_sd_right1.i -->
+  <Reference_Marker
+     id                  = "30103070"
+     label               = "sd_right1-Marker I"
+     full_label          = "Model-sd_right1-Marker I"
+     body_id             = "30103"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "-0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.m_3 -->
+  <Reference_Marker
+     id                  = "30103071"
+     label               = "Marker 3"
+     full_label          = "Model-Marker 3"
+     body_id             = "30103"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "-0.5"
+     pos_z               = "0."
+     a00                 = "0."
+     a10                 = "-1."
+     a20                 = "0."
+     a02                 = "-1."
+     a12                 = "0."
+     a22                 = "0."
+  />
+<!-- MODEL.sd_sdnew_right1.j -->
+  <Reference_Marker
+     id                  = "30103072"
+     label               = "sdnew_right1-Marker J"
+     full_label          = "Model-sdnew_right1-Marker J"
+     body_id             = "30103"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "-0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.sd_sdnew2_right1.j -->
+  <Reference_Marker
+     id                  = "30103073"
+     label               = "sdnew2_right1-Marker J"
+     full_label          = "Model-sdnew2_right1-Marker J"
+     body_id             = "30103"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "-0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.b_bogie.lprf -->
+  <Reference_Marker
+     id                  = "30104001"
+     label               = "bogie-Marker LPRF"
+     full_label          = "Model-bogie-Marker LPRF"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.b_bogie.cm -->
+  <Reference_Marker
+     id                  = "30104100"
+     label               = "bogie-Marker CM"
+     full_label          = "Model-bogie-Marker CM"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+     pos_x               = "0.5"
+     pos_y               = "0."
+     pos_z               = "0.5"
+  />
+<!-- MODEL.sd_sd_left.j -->
+  <Reference_Marker
+     id                  = "30104120"
+     label               = "sd_left-Marker J"
+     full_label          = "Model-sd_left-Marker J"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+     pos_x               = "0."
+     pos_y               = "0.5"
+     pos_z               = "0.5"
+  />
+<!-- MODEL.sd_sd_right.j -->
+  <Reference_Marker
+     id                  = "30104130"
+     label               = "sd_right-Marker J"
+     full_label          = "Model-sd_right-Marker J"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+     pos_x               = "0."
+     pos_y               = "-0.5"
+     pos_z               = "0.5"
+  />
+<!-- MODEL.sd_sd_left1.j -->
+  <Reference_Marker
+     id                  = "30104140"
+     label               = "sd_left1-Marker J"
+     full_label          = "Model-sd_left1-Marker J"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "0.5"
+     pos_z               = "0.5"
+  />
+<!-- MODEL.sd_sd_right1.j -->
+  <Reference_Marker
+     id                  = "30104150"
+     label               = "sd_right1-Marker J"
+     full_label          = "Model-sd_right1-Marker J"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "-0.5"
+     pos_z               = "0.5"
+  />
+<!-- MODEL.sd_sdnew.i -->
+  <Reference_Marker
+     id                  = "30104170"
+     label               = "sdnew_left-Marker I"
+     full_label          = "Model-sdnew_left-Marker I"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+     pos_x               = "-0.5"
+     pos_y               = "0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.sd_sdnew_right.i -->
+  <Reference_Marker
+     id                  = "30104180"
+     label               = "sdnew_right-Marker I"
+     full_label          = "Model-sdnew_right-Marker I"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+     pos_x               = "-0.5"
+     pos_y               = "-0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.sd_sdnew_left1.i -->
+  <Reference_Marker
+     id                  = "30104190"
+     label               = "sdnew_left1-Marker I"
+     full_label          = "Model-sdnew_left1-Marker I"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+     pos_x               = "1.5"
+     pos_y               = "0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.sd_sdnew_right1.i -->
+  <Reference_Marker
+     id                  = "30104200"
+     label               = "sdnew_right1-Marker I"
+     full_label          = "Model-sdnew_right1-Marker I"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+     pos_x               = "1.5"
+     pos_y               = "-0.5"
+     pos_z               = "0."
+  />
+<!-- MODEL.sd_sdnew2_left.i -->
+  <Reference_Marker
+     id                  = "30104210"
+     label               = "sdnew2_left-Marker I"
+     full_label          = "Model-sdnew2_left-Marker I"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+     pos_x               = "0."
+     pos_y               = "1."
+     pos_z               = "0."
+  />
+<!-- MODEL.sd_sdnew2_right.i -->
+  <Reference_Marker
+     id                  = "30104220"
+     label               = "sdnew2_right-Marker I"
+     full_label          = "Model-sdnew2_right-Marker I"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+     pos_x               = "0."
+     pos_y               = "-1."
+     pos_z               = "0."
+  />
+<!-- MODEL.sd_sdnew2_left1.i -->
+  <Reference_Marker
+     id                  = "30104230"
+     label               = "sdnew2_left1-Marker I"
+     full_label          = "Model-sdnew2_left1-Marker I"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "1."
+     pos_z               = "0."
+  />
+<!-- MODEL.sd_sdnew2_right1.i -->
+  <Reference_Marker
+     id                  = "30104240"
+     label               = "sdnew2_right1-Marker I"
+     full_label          = "Model-sdnew2_right1-Marker I"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "-1."
+     pos_z               = "0."
+  />
+<!-- MODEL.o_disp_ws1.j -->
+  <Reference_Marker
+     id                  = "70000000"
+     label               = "disp_ws1-Marker J"
+     full_label          = "Model-disp_ws1-Marker J"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.o_vel_ws1.i -->
+  <Reference_Marker
+     id                  = "70000001"
+     label               = "vel_ws1-Marker I"
+     full_label          = "Model-vel_ws1-Marker I"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.o_vel_ws1.j -->
+  <Reference_Marker
+     id                  = "70000002"
+     label               = "vel_ws1-Marker J"
+     full_label          = "Model-vel_ws1-Marker J"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.j_orient_rear.joint_j -->
+  <Reference_Marker
+     id                  = "70000003"
+     label               = "Orient_Rear-Marker J"
+     full_label          = "Model-Orient_Rear-Marker J"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.j_orient_front.joint_j -->
+  <Reference_Marker
+     id                  = "70000004"
+     label               = "Orient_Front-Marker J"
+     full_label          = "Model-Orient_Front-Marker J"
+     body_id             = "30101"
+     body_type           = "RigidBody"
+  />
+<!-- MODEL.gcyl_0_center_marker -->
+  <Reference_Marker
+     id                  = "90000000"
+     label               = "Cylinder 0 - Center Marker"
+     full_label          = "Model-Cylinder 0 - Center Marker"
+     body_id             = "30102"
+     body_type           = "RigidBody"
+     pos_x               = "0."
+     pos_y               = "0.5"
+     pos_z               = "0."
+     a00                 = "-1."
+     a10                 = "0."
+     a20                 = "0."
+     a02                 = "0."
+     a12                 = "-1."
+     a22                 = "0."
+  />
+<!-- MODEL.gcyl_1_center_marker -->
+  <Reference_Marker
+     id                  = "90000001"
+     label               = "Cylinder 1 - Center Marker"
+     full_label          = "Model-Cylinder 1 - Center Marker"
+     body_id             = "30103"
+     body_type           = "RigidBody"
+     pos_x               = "1."
+     pos_y               = "0.5"
+     pos_z               = "0."
+     a00                 = "-1."
+     a10                 = "0."
+     a20                 = "0."
+     a02                 = "0."
+     a12                 = "-1."
+     a22                 = "0."
+  />
+<!-- MODEL.gbox_0_center_marker -->
+  <Reference_Marker
+     id                  = "90000002"
+     label               = "Box 0 - Center Marker"
+     full_label          = "Model-Box 0 - Center Marker"
+     body_id             = "30104"
+     body_type           = "RigidBody"
+     pos_x               = "0.5"
+     pos_y               = "0."
+     pos_z               = "0.5"
+  />
+<!-- MODEL.crv_wheel -->
+  <Reference_Spline
+     id                  = "301001"
+     label               = "wheel"
+     full_label          = "Model-wheel"
+     num_x               = "100"
+     linear_extrap       = "FALSE">
+  -1.0000000E-01  -4.0000000E-01
+  -9.9949654E-02  -3.9994965E-01
+  -9.9798668E-02  -3.9979867E-01
+  -9.9547192E-02  -3.9954719E-01
+  -9.9195481E-02  -3.9919548E-01
+  -9.8743889E-02  -3.9874389E-01
+  -9.8192870E-02  -3.9819287E-01
+  -9.7542979E-02  -3.9754298E-01
+  -9.6794870E-02  -3.9679487E-01
+  -9.5949297E-02  -3.9594930E-01
+  -9.5007112E-02  -3.9500711E-01
+  -9.3969262E-02  -3.9396926E-01
+  -9.2836793E-02  -3.9283679E-01
+  -9.1610846E-02  -3.9161085E-01
+  -9.0292654E-02  -3.9029265E-01
+  -8.8883545E-02  -3.8888354E-01
+  -8.7384938E-02  -3.8738494E-01
+  -8.5798341E-02  -3.8579834E-01
+  -8.4125353E-02  -3.8412535E-01
+  -8.2367658E-02  -3.8236766E-01
+  -8.0527026E-02  -3.8052703E-01
+  -7.8605309E-02  -3.7860531E-01
+  -7.6604444E-02  -3.7660444E-01
+  -7.4526445E-02  -3.7452644E-01
+  -7.2373404E-02  -3.7237340E-01
+  -7.0147489E-02  -3.7014749E-01
+  -6.7850941E-02  -3.6785094E-01
+  -6.5486073E-02  -3.6548607E-01
+  -6.3055267E-02  -3.6305527E-01
+  -6.0560969E-02  -3.6056097E-01
+  -5.8005691E-02  -3.5800569E-01
+  -5.5392006E-02  -3.5539201E-01
+  -5.2722547E-02  -3.5272255E-01
+  -5.0000000E-02  -3.5000000E-01
+  -4.7227107E-02  -3.4722711E-01
+  -4.4406661E-02  -3.4440666E-01
+  -4.1541501E-02  -3.4154150E-01
+  -3.8634513E-02  -3.3863451E-01
+  -3.5688622E-02  -3.3568862E-01
+  -3.2706796E-02  -3.3270680E-01
+  -2.9692038E-02  -3.2969204E-01
+  -2.6647381E-02  -3.2664738E-01
+  -2.3575894E-02  -3.2357589E-01
+  -2.0480667E-02  -3.2048067E-01
+  -1.7364818E-02  -3.1736482E-01
+  -1.4231484E-02  -3.1423148E-01
+  -1.1083820E-02  -3.1108382E-01
+  -7.9249960E-03  -3.0792500E-01
+  -4.7581920E-03  -3.0475819E-01
+  -1.5865960E-03  -3.0158660E-01
+   1.5865960E-03  -2.9841340E-01
+   4.7581920E-03  -2.9524181E-01
+   7.9249960E-03  -2.9207500E-01
+   1.1083820E-02  -2.8891618E-01
+   1.4231484E-02  -2.8576852E-01
+   1.7364818E-02  -2.8263518E-01
+   2.0480667E-02  -2.7951933E-01
+   2.3575894E-02  -2.7642411E-01
+   2.6647381E-02  -2.7335262E-01
+   2.9692038E-02  -2.7030796E-01
+   3.2706796E-02  -2.6729320E-01
+   3.5688622E-02  -2.6431138E-01
+   3.8634513E-02  -2.6136549E-01
+   4.1541501E-02  -2.5845850E-01
+   4.4406661E-02  -2.5559334E-01
+   4.7227107E-02  -2.5277289E-01
+   5.0000000E-02  -2.5000000E-01
+   5.2722547E-02  -2.4727745E-01
+   5.5392006E-02  -2.4460799E-01
+   5.8005691E-02  -2.4199431E-01
+   6.0560969E-02  -2.3943903E-01
+   6.3055267E-02  -2.3694473E-01
+   6.5486073E-02  -2.3451393E-01
+   6.7850941E-02  -2.3214906E-01
+   7.0147489E-02  -2.2985251E-01
+   7.2373404E-02  -2.2762660E-01
+   7.4526445E-02  -2.2547355E-01
+   7.6604444E-02  -2.2339556E-01
+   7.8605309E-02  -2.2139469E-01
+   8.0527026E-02  -2.1947297E-01
+   8.2367658E-02  -2.1763234E-01
+   8.4125353E-02  -2.1587465E-01
+   8.5798341E-02  -2.1420166E-01
+   8.7384938E-02  -2.1261506E-01
+   8.8883545E-02  -2.1111646E-01
+   9.0292654E-02  -2.0970735E-01
+   9.1610846E-02  -2.0838915E-01
+   9.2836793E-02  -2.0716321E-01
+   9.3969262E-02  -2.0603074E-01
+   9.5007112E-02  -2.0499289E-01
+   9.5949297E-02  -2.0405070E-01
+   9.6794870E-02  -2.0320513E-01
+   9.7542979E-02  -2.0245702E-01
+   9.8192870E-02  -2.0180713E-01
+   9.8743889E-02  -2.0125611E-01
+   9.9195481E-02  -2.0080452E-01
+   9.9547192E-02  -2.0045281E-01
+   9.9798668E-02  -2.0020133E-01
+   9.9949654E-02  -2.0005035E-01
+   1.0000000E-01  -2.0000000E-01
+  </Reference_Spline>
+<!-- MODEL.crv_rail -->
+  <Reference_Spline
+     id                  = "301002"
+     label               = "rail"
+     full_label          = "Model-rail"
+     num_x               = "100"
+     linear_extrap       = "FALSE">
+  -1.0000000E-01   1.2200000E-17
+  -9.9949654E-02   3.1727930E-03
+  -9.9798668E-02   6.3423920E-03
+  -9.9547192E-02   9.5056040E-03
+  -9.9195481E-02   1.2659245E-02
+  -9.8743889E-02   1.5800140E-02
+  -9.8192870E-02   1.8925124E-02
+  -9.7542979E-02   2.2031053E-02
+  -9.6794870E-02   2.5114799E-02
+  -9.5949297E-02   2.8173256E-02
+  -9.5007112E-02   3.1203345E-02
+  -9.3969262E-02   3.4202014E-02
+  -9.2836793E-02   3.7166246E-02
+  -9.1610846E-02   4.0093054E-02
+  -9.0292654E-02   4.2979491E-02
+  -8.8883545E-02   4.5822652E-02
+  -8.7384938E-02   4.8619674E-02
+  -8.5798341E-02   5.1367739E-02
+  -8.4125353E-02   5.4064082E-02
+  -8.2367658E-02   5.6705986E-02
+  -8.0527026E-02   5.9290793E-02
+  -7.8605309E-02   6.1815899E-02
+  -7.6604444E-02   6.4278761E-02
+  -7.4526445E-02   6.6676900E-02
+  -7.2373404E-02   6.9007901E-02
+  -7.0147489E-02   7.1269417E-02
+  -6.7850941E-02   7.3459171E-02
+  -6.5486073E-02   7.5574957E-02
+  -6.3055267E-02   7.7614646E-02
+  -6.0560969E-02   7.9576184E-02
+  -5.8005691E-02   8.1457595E-02
+  -5.5392006E-02   8.3256985E-02
+  -5.2722547E-02   8.4972543E-02
+  -5.0000000E-02   8.6602540E-02
+  -4.7227107E-02   8.8145336E-02
+  -4.4406661E-02   8.9599377E-02
+  -4.1541501E-02   9.0963200E-02
+  -3.8634513E-02   9.2235429E-02
+  -3.5688622E-02   9.3414786E-02
+  -3.2706796E-02   9.4500082E-02
+  -2.9692038E-02   9.5490224E-02
+  -2.6647381E-02   9.6384216E-02
+  -2.3575894E-02   9.7181157E-02
+  -2.0480667E-02   9.7880245E-02
+  -1.7364818E-02   9.8480775E-02
+  -1.4231484E-02   9.8982144E-02
+  -1.1083820E-02   9.9383846E-02
+  -7.9249960E-03   9.9685478E-02
+  -4.7581920E-03   9.9886734E-02
+  -1.5865960E-03   9.9987413E-02
+   1.5865960E-03   9.9987413E-02
+   4.7581920E-03   9.9886734E-02
+   7.9249960E-03   9.9685478E-02
+   1.1083820E-02   9.9383846E-02
+   1.4231484E-02   9.8982144E-02
+   1.7364818E-02   9.8480775E-02
+   2.0480667E-02   9.7880245E-02
+   2.3575894E-02   9.7181157E-02
+   2.6647381E-02   9.6384216E-02
+   2.9692038E-02   9.5490224E-02
+   3.2706796E-02   9.4500082E-02
+   3.5688622E-02   9.3414786E-02
+   3.8634513E-02   9.2235429E-02
+   4.1541501E-02   9.0963200E-02
+   4.4406661E-02   8.9599377E-02
+   4.7227107E-02   8.8145336E-02
+   5.0000000E-02   8.6602540E-02
+   5.2722547E-02   8.4972543E-02
+   5.5392006E-02   8.3256985E-02
+   5.8005691E-02   8.1457595E-02
+   6.0560969E-02   7.9576184E-02
+   6.3055267E-02   7.7614646E-02
+   6.5486073E-02   7.5574957E-02
+   6.7850941E-02   7.3459171E-02
+   7.0147489E-02   7.1269417E-02
+   7.2373404E-02   6.9007901E-02
+   7.4526445E-02   6.6676900E-02
+   7.6604444E-02   6.4278761E-02
+   7.8605309E-02   6.1815899E-02
+   8.0527026E-02   5.9290793E-02
+   8.2367658E-02   5.6705986E-02
+   8.4125353E-02   5.4064082E-02
+   8.5798341E-02   5.1367739E-02
+   8.7384938E-02   4.8619674E-02
+   8.8883545E-02   4.5822652E-02
+   9.0292654E-02   4.2979491E-02
+   9.1610846E-02   4.0093054E-02
+   9.2836793E-02   3.7166246E-02
+   9.3969262E-02   3.4202014E-02
+   9.5007112E-02   3.1203345E-02
+   9.5949297E-02   2.8173256E-02
+   9.6794870E-02   2.5114799E-02
+   9.7542979E-02   2.2031053E-02
+   9.8192870E-02   1.8925124E-02
+   9.8743889E-02   1.5800140E-02
+   9.9195481E-02   1.2659245E-02
+   9.9547192E-02   9.5056040E-03
+   9.9798668E-02   6.3423920E-03
+   9.9949654E-02   3.1727930E-03
+   1.0000000E-01   0.0000000E+00
+  </Reference_Spline>
+<!-- MODEL.B_Ground -->
+  <Body_Rigid
+     id                  = "30101"
+     label               = "Ground Body"
+     full_label          = "Model-Ground Body"
+     IsGround            = "TRUE"
+  />
+<!-- MODEL.b_ws -->
+  <Body_Rigid
+     id                  = "30102"
+     label               = "ws"
+     full_label          = "Model-ws"
+     cg_id               = "30102020"
+     im_id               = "30102020"
+     lprf_id             = "30102001"
+     mass                = "1."
+     inertia_xx          = "0.1"
+     inertia_yy          = "0.1"
+     inertia_zz          = "0.1"
+  />
+<!-- MODEL.b_ws1 -->
+  <Body_Rigid
+     id                  = "30103"
+     label               = "ws1"
+     full_label          = "Model-ws1"
+     cg_id               = "30103030"
+     im_id               = "30103030"
+     lprf_id             = "30103001"
+     mass                = "1."
+     inertia_xx          = "0.1"
+     inertia_yy          = "0.1"
+     inertia_zz          = "0.1"
+  />
+<!-- MODEL.b_bogie -->
+  <Body_Rigid
+     id                  = "30104"
+     label               = "bogie"
+     full_label          = "Model-bogie"
+     cg_id               = "30104100"
+     im_id               = "30104100"
+     lprf_id             = "30104001"
+     mass                = "10."
+     inertia_xx          = "1."
+     inertia_yy          = "1."
+     inertia_zz          = "1."
+  />
+<!-- MODEL.j_orient_rear -->
+  <Constraint_Jprim
+     id                  = "301001"
+     label               = "Orient_Rear"
+     full_label          = "Model-Orient_Rear"
+     type                = "ORIENTATION"
+     i_marker_id         = "30102021"
+     j_marker_id         = "70000003"
+  />
+<!-- MODEL.j_orient_front -->
+  <Constraint_Jprim
+     id                  = "301002"
+     label               = "Orient_Front"
+     full_label          = "Model-Orient_Front"
+     type                = "ORIENTATION"
+     i_marker_id         = "30103031"
+     j_marker_id         = "70000004"
+  />
+  <Force_Gravity
+     grav_x              = "0."
+     grav_y              = "0."
+     grav_z              = "-9.81"
+  />
+<!-- MODEL.sd_sd_left -->
+  <Force_SpringDamper
+     id                  = "301001"
+     label               = "sd_left"
+     full_label          = "Model-sd_left"
+     type                = "TRANSLATIONAL"
+     i_marker_id         = "30102040"
+     j_marker_id         = "30104120"
+     length              = "0.5"
+     stiffness           = "1000."
+     damping             = "100."
+     preload             = "0."
+  />
+<!-- MODEL.sd_sd_right -->
+  <Force_SpringDamper
+     id                  = "301002"
+     label               = "sd_right"
+     full_label          = "Model-sd_right"
+     type                = "TRANSLATIONAL"
+     i_marker_id         = "30102050"
+     j_marker_id         = "30104130"
+     length              = "0.5"
+     stiffness           = "1000."
+     damping             = "100."
+     preload             = "0."
+  />
+<!-- MODEL.sd_sd_left1 -->
+  <Force_SpringDamper
+     id                  = "301003"
+     label               = "sd_left1"
+     full_label          = "Model-sd_left1"
+     type                = "TRANSLATIONAL"
+     i_marker_id         = "30103060"
+     j_marker_id         = "30104140"
+     length              = "0.5"
+     stiffness           = "1000."
+     damping             = "100."
+     preload             = "0."
+  />
+<!-- MODEL.sd_sd_right1 -->
+  <Force_SpringDamper
+     id                  = "301004"
+     label               = "sd_right1"
+     full_label          = "Model-sd_right1"
+     type                = "TRANSLATIONAL"
+     i_marker_id         = "30103070"
+     j_marker_id         = "30104150"
+     length              = "0.5"
+     stiffness           = "1000."
+     damping             = "100."
+     preload             = "0."
+  />
+<!-- MODEL.sd_sdnew -->
+  <Force_SpringDamper
+     id                  = "301005"
+     label               = "sdnew_left"
+     full_label          = "Model-sdnew_left"
+     type                = "TRANSLATIONAL"
+     i_marker_id         = "30104170"
+     j_marker_id         = "30102042"
+     length              = "0.5"
+     stiffness           = "1000."
+     damping             = "100."
+     preload             = "0."
+  />
+<!-- MODEL.sd_sdnew_right -->
+  <Force_SpringDamper
+     id                  = "301006"
+     label               = "sdnew_right"
+     full_label          = "Model-sdnew_right"
+     type                = "TRANSLATIONAL"
+     i_marker_id         = "30104180"
+     j_marker_id         = "30102052"
+     length              = "0.5"
+     stiffness           = "1000."
+     damping             = "100."
+     preload             = "0."
+  />
+<!-- MODEL.sd_sdnew_left1 -->
+  <Force_SpringDamper
+     id                  = "301007"
+     label               = "sdnew_left1"
+     full_label          = "Model-sdnew_left1"
+     type                = "TRANSLATIONAL"
+     i_marker_id         = "30104190"
+     j_marker_id         = "30103062"
+     length              = "0.5"
+     stiffness           = "1000."
+     damping             = "100."
+     preload             = "0."
+  />
+<!-- MODEL.sd_sdnew_right1 -->
+  <Force_SpringDamper
+     id                  = "301008"
+     label               = "sdnew_right1"
+     full_label          = "Model-sdnew_right1"
+     type                = "TRANSLATIONAL"
+     i_marker_id         = "30104200"
+     j_marker_id         = "30103072"
+     length              = "0.5"
+     stiffness           = "1000."
+     damping             = "100."
+     preload             = "0."
+  />
+<!-- MODEL.sd_sdnew2_left -->
+  <Force_SpringDamper
+     id                  = "301009"
+     label               = "sdnew2_left"
+     full_label          = "Model-sdnew2_left"
+     type                = "TRANSLATIONAL"
+     i_marker_id         = "30104210"
+     j_marker_id         = "30102043"
+     length              = "0.5"
+     stiffness           = "1000."
+     damping             = "100."
+     preload             = "0."
+  />
+<!-- MODEL.sd_sdnew2_right -->
+  <Force_SpringDamper
+     id                  = "301010"
+     label               = "sdnew2_right"
+     full_label          = "Model-sdnew2_right"
+     type                = "TRANSLATIONAL"
+     i_marker_id         = "30104220"
+     j_marker_id         = "30102053"
+     length              = "0.5"
+     stiffness           = "1000."
+     damping             = "100."
+     preload             = "0."
+  />
+<!-- MODEL.sd_sdnew2_left1 -->
+  <Force_SpringDamper
+     id                  = "301011"
+     label               = "sdnew2_left1"
+     full_label          = "Model-sdnew2_left1"
+     type                = "TRANSLATIONAL"
+     i_marker_id         = "30104230"
+     j_marker_id         = "30103063"
+     length              = "0.5"
+     stiffness           = "1000."
+     damping             = "100."
+     preload             = "0."
+  />
+<!-- MODEL.sd_sdnew2_right1 -->
+  <Force_SpringDamper
+     id                  = "301012"
+     label               = "sdnew2_right1"
+     full_label          = "Model-sdnew2_right1"
+     type                = "TRANSLATIONAL"
+     i_marker_id         = "30104240"
+     j_marker_id         = "30103073"
+     length              = "0.5"
+     stiffness           = "1000."
+     damping             = "100."
+     preload             = "0."
+  />
+<!-- MODEL.o_disp_bogie -->
+  <Post_Request
+     id                  = "70000005"
+     comment             = "disp_bogie- (on bogie)"
+     type                = "MARKER_DISPLACEMENT"
+     i_marker_id         = "30104100"
+     j_marker_id         = "30101012"
+     ref_marker_id       = "30101010"
+  />
+<!-- MODEL.o_disp_ws -->
+  <Post_Request
+     id                  = "70000009"
+     comment             = "disp_ws- (on ws)"
+     type                = "MARKER_DISPLACEMENT"
+     i_marker_id         = "30102020"
+     j_marker_id         = "30101016"
+     ref_marker_id       = "30101010"
+  />
+<!-- MODEL.o_disp_ws1 -->
+  <Post_Request
+     id                  = "70000013"
+     comment             = "disp_ws1- (on ws1)"
+     type                = "MARKER_DISPLACEMENT"
+     i_marker_id         = "30103030"
+     j_marker_id         = "70000000"
+     ref_marker_id       = "30101010"
+  />
+<!-- MODEL.o_vel_bogie -->
+  <Post_Request
+     id                  = "70000007"
+     comment             = "vel_bogie- (on bogie)"
+     type                = "MARKER_VELOCITY"
+     i_marker_id         = "30104100"
+     j_marker_id         = "30101014"
+     ref_marker_id       = "30101010"
+  />
+<!-- MODEL.o_vel_ws -->
+  <Post_Request
+     id                  = "70000011"
+     comment             = "vel_ws- (on ws)"
+     type                = "MARKER_VELOCITY"
+     i_marker_id         = "30102020"
+     j_marker_id         = "30101018"
+     ref_marker_id       = "30101010"
+  />
+<!-- MODEL.o_vel_ws1 -->
+  <Post_Request
+     id                  = "70000015"
+     comment             = "vel_ws1- (on ws1)"
+     type                = "MARKER_VELOCITY"
+     i_marker_id         = "30103030"
+     j_marker_id         = "70000002"
+     ref_marker_id       = "30101010"
+  />
+<!-- MODEL.gcyl_0 -->
+  <Post_Graphic
+     id                  = "90000"
+     label               = "Cylinder 0"
+     full_label          = "Model-Cylinder 0"
+     color               = "158:200:23"
+     type                = "Frustum"
+     center_marker_id    = "90000000"
+     top_radius          = "0.05"
+     bottom_radius       = "0.05"
+     length              = "1."
+     ends_type           = "CLOSED"
+     refinement_level    = "3"
+     is_material_inside  = "TRUE"
+  />
+<!-- MODEL.gcyl_1 -->
+  <Post_Graphic
+     id                  = "90001"
+     label               = "Cylinder 1"
+     full_label          = "Model-Cylinder 1"
+     color               = "184:184:184"
+     type                = "Frustum"
+     center_marker_id    = "90000001"
+     top_radius          = "0.05"
+     bottom_radius       = "0.05"
+     length              = "1."
+     ends_type           = "CLOSED"
+     refinement_level    = "3"
+     is_material_inside  = "TRUE"
+  />
+<!-- MODEL.gbox_0 -->
+  <Post_Graphic
+     id                  = "90002"
+     label               = "Box 0"
+     full_label          = "Model-Box 0"
+     color               = "89:167:235"
+     type                = "BoxDefinedFromCenter"
+     center_marker_id    = "90000002"
+     length_x            = "1.5"
+     length_y            = "1.5"
+     length_z            = "0.1"
+     refinement_level    = "3"
+     is_material_inside  = "TRUE"
+  />
+  <Body_Wheel_Set
+     id = "1"
+     label = "wheel_set"
+     body_id = "30102"
+     profile_marker_left_id = "30102041"
+     profile_marker_right_id = "30102051"
+     wheel_right_profile_id = "301001"
+     global_marker_id = "30101010"
+  />
+
+  <Body_Wheel_Set
+     id = "2"
+     label = "wheel_set2"
+     body_id = "30103"
+     profile_marker_left_id = "30103061"
+     profile_marker_right_id = "30103071"
+     wheel_right_profile_id = "301001"
+     global_marker_id = "30101010"
+  />
+
+
+<!--                           -->
+  <Entity_Rail
+     id = "1"
+     label           = "rail"
+     rail_right_profile_id = "301002"
+  />
+ </Model>
+ <Command
+     time_out            = "999999"> <!--In SECONDS-->
+  <ResOutput
+     mrf_file            = "FALSE"
+     abf_file            = "FALSE"
+     plt_file            = "TRUE"
+     angle_type          = "YPR"
+     flex_vel_acc_output = "FALSE"
+     contact_gra_output  = "TRUE"
+     abf_unique_time     = "LAST"
+     plt_unique_time     = "LAST"
+     azero               = "1.0000E-10"
+     dzero               = "1.0000E-10"
+     fzero               = "1.0000E-10"
+     vzero               = "1.0000E-10"
+     capture_max_pd      = "TRUE"
+  />
+  <H3DOutput
+     switch_on           = "TRUE"
+     increment           = "1"
+     format_option       = "AUTO"
+     stress_option       = "TENSOR"
+     strain_option       = "TENSOR"
+  />
+  <Simulate
+     analysis_type       = "Transient"
+     end_time            = "5."
+     print_interval      = "0.01"
+  />
+ </Command>
+</MultiBodySystem>

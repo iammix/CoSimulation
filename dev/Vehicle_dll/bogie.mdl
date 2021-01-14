@@ -1,0 +1,195 @@
+//////////////////////////////////////////////////////////////////////
+ Altair HyperWorks
+
+ Version : HWVERSION_2019.1.0.20_Jun 28 2019_17:26:38
+
+ Model : Model
+
+ Customer ID : 
+
+ Date : Tue Dec 15 12:51:31 2020
+//////////////////////////////////////////////////////////////////////
+
+*BeginMDL( the_model, "Model", "2019.1.0.20" )
+
+  *StandardInclude(FILE)
+  *SetCurrentSolverMode(MotionSolve)
+  *LoadPreferenceFile(MBD-Vehicle Dynamics Tools)
+  *Point( p_ws_cm, "ws_cm" )
+  *Point( p_ws_cm1, "ws_cm1" )
+  *Point( p_ws_left, "ws_left" )
+  *Point( p_ws_right, "ws_right" )
+  *Point( p_ws_left1, "ws_left1" )
+  *Point( p_ws_right1, "ws_right1" )
+  *Body( b_ws, "ws", p_ws_cm, , , ,  )
+  *Body( b_ws1, "ws1", p_ws_cm1, , , ,  )
+  *Graphic( gcyl_0, "Cylinder 0", CYLINDER, b_ws, p_ws_left, POINT, p_ws_right, 0.05, gcyl_0.r1, , 0.0, CAPBOTH, 3 )
+  *Graphic( gcyl_1, "Cylinder 1", CYLINDER, b_ws1, p_ws_left1, POINT, p_ws_right1, 0.05, gcyl_1.r1, , 0.0, CAPBOTH, 3 )
+  *Point( p_bogie_cm, "bogie_cm" )
+  *Body( b_bogie, "bogie", p_bogie_cm, , , ,  )
+  *Graphic( gbox_0, "Box 0", BOX, b_bogie, CENTER, p_bogie_cm, ZX, VECTOR, V_Global_Z, VECTOR, V_Global_X, 1.5, 1.5, 0.1, 3 )
+  *Point( p_sd_left, "sd_left" )
+  *Point( p_sd_right, "sd_right" )
+  *Point( p_sd_left1, "sd_left1" )
+  *Point( p_sd_right1, "sd_right1" )
+  *Template( tmplt_wheel_set, "wheel_set", SOLVER_INPUT, def_tmplt_0 )
+  *CoilSpring( sd_sd_left, "sd_left", b_ws, b_bogie, p_ws_left, p_sd_left )
+  *CoilSpring( sd_sd_right, "sd_right", b_ws, b_bogie, p_ws_right, p_sd_right )
+  *CoilSpring( sd_sd_left1, "sd_left1", b_ws1, b_bogie, p_ws_left1, p_sd_left1 )
+  *CoilSpring( sd_sd_right1, "sd_right1", b_ws1, b_bogie, p_ws_right1, p_sd_right1 )
+  *Output( o_disp_bogie, "disp_bogie", DISP, BODY, b_bogie, Global_Frame, I_MARKER )
+  *Output( o_vel_bogie, "vel_bogie", VEL, BODY, b_bogie, Global_Frame, I_MARKER )
+  *Curve( crv_wheel, "wheel", 2D, CARTESIAN, WRITE, CURVE_POINTS, OPEN )
+  *Curve( crv_rail, "rail", 2D, CARTESIAN, WRITE, CURVE_POINTS, OPEN )
+  *Template( tmplt_rail, "rail", SOLVER_INPUT, def_tmplt_1 )
+  *Marker( m_0, "Marker 0", b_ws, p_ws_left )
+  *Marker( m_1, "Marker 1", b_ws, p_ws_right )
+  *Marker( m_2, "Marker 2", b_ws1, p_ws_left1 )
+  *Marker( m_3, "Marker 3", b_ws1, p_ws_right1 )
+  *DataSet( ds_0, "Dataset 0", def_ds_0 )
+  *Point( p_fix, "fix" )
+  *Point( p_sdnew_left, "sdnew_left" )
+  *Point( p_sdnew_right, "sdnew_right" )
+  *Point( p_sdnew_left1, "sdnew_left1" )
+  *Point( p_sdnew_right1, "sdnew_right1" )
+  *CoilSpring( sd_sdnew, "sdnew_left", b_bogie, b_ws, p_sdnew_left, p_ws_left )
+  *CoilSpring( sd_sdnew_right, "sdnew_right", b_bogie, b_ws, p_sdnew_right, p_ws_right )
+  *CoilSpring( sd_sdnew_left1, "sdnew_left1", b_bogie, b_ws1, p_sdnew_left1, p_ws_left1 )
+  *CoilSpring( sd_sdnew_right1, "sdnew_right1", b_bogie, b_ws1, p_sdnew_right1, p_ws_right1 )
+  *Output( o_disp_ws, "disp_ws", DISP, BODY, b_ws, Global_Frame, I_MARKER )
+  *Output( o_vel_ws, "vel_ws", VEL, BODY, b_ws, Global_Frame, I_MARKER )
+  *Output( o_disp_ws1, "disp_ws1", DISP, BODY, b_ws1, Global_Frame, I_MARKER )
+  *Output( o_vel_ws1, "vel_ws1", VEL, BODY, b_ws1, Global_Frame, I_MARKER )
+  *Point( p_sd_new2_left, "sdnew2_left" )
+  *Point( p_sd_new2_right, "sdnew2_right" )
+  *Point( p_sd_new2_left1, "sdnew2_left1" )
+  *Point( p_sd_new2_right1, "sdnew2_right1" )
+  *CoilSpring( sd_sdnew2_left, "sdnew2_left", b_bogie, b_ws, p_sd_new2_left, p_ws_left )
+  *CoilSpring( sd_sdnew2_right, "sdnew2_right", b_bogie, b_ws, p_sd_new2_right, p_ws_right )
+  *CoilSpring( sd_sdnew2_left1, "sdnew2_left1", b_bogie, b_ws1, p_sd_new2_left1, p_ws_left1 )
+  *CoilSpring( sd_sdnew2_right1, "sdnew2_right1", b_bogie, b_ws1, p_sd_new2_right1, p_ws_right1 )
+  *OrientJoint( j_orient_rear, "Orient_Rear", b_ws, B_Ground, p_ws_cm, P_Global_Origin )
+  *OrientJoint( j_orient_front, "Orient_Front", b_ws1, B_Ground, p_ws_cm1, P_Global_Origin )
+  *Output( o_angvel_body_bogie, "angvel_body_bogie", EXPR, `WX({b_bogie.cm.id},{Global_Frame.id},{b_bogie.cm.id})`, `WY({b_bogie.cm.id},{Global_Frame.id},{b_bogie.cm.id})`, `WZ({b_bogie.cm.id},{Global_Frame.id},{b_bogie.cm.id})`, `0`, `0`, `0` )
+  *Output( o_angvel_body_ws, "angvel_body_ws", EXPR, `WX({b_ws.cm.id},{Global_Frame.id},{b_ws.cm.id})`, `WY({b_ws.cm.id},{Global_Frame.id},{b_ws.cm.id})`, `WZ({b_ws.cm.id},{Global_Frame.id},{b_ws.cm.id})`, `0`, `0`, `0` )
+  *Output( o_angvel_body_ws1, "angvel_body_ws1", EXPR, `WX({b_ws1.cm.id},{Global_Frame.id},{b_ws1.cm.id})`, `WY({b_ws1.cm.id},{Global_Frame.id},{b_ws1.cm.id})`, `WZ({b_ws1.cm.id},{Global_Frame.id},{b_ws1.cm.id})`, `0`, `0`, `0` )
+  *SetReal( DS_Gravity.kgrav,           -9.81 )
+  *SetOption( DS_Units.op_length,         "METER" )
+  *Set( b_ws.usecm, true )
+  *Set( b_ws1.usecm, true )
+  *Set( b_bogie.usecm, true )
+  *SetGraphicAttributes( gbox_0,                     TRANSPARENT )
+  *SetOption( DS_MotionSolve_Simopts.write_mrf,       "FALSE" )
+  *SetBoolean( DS_MotionSolve_Simopts.write_abf,       false )
+  *SetReal( DS_MotionSolve_Transient_Simopts.integr_tol,       1e-5 )
+  *SetReal( DS_MotionSolve_Transient_Simopts.h_max,       1e-4 )
+  *SetInteger( DS_MotionSolve_Transient_Simopts.max_order,       5 )
+  *SetCurve( crv_wheel,                  FILE, "./wheel_tread_profile.csv", "Unknown", "Block 1", "Column 1", FILE, "./wheel_tread_profile.csv", "Unknown", "Block 1", "Column 2" )
+  *SetCurve( crv_rail,                   FILE, "./rail_profile.csv", "Unknown", "Block 1", "Column 1", FILE, "./rail_profile.csv", "Unknown", "Block 1", "Column 2" )
+  *SetOrientation( m_0,                        TWOAXES, YX, DXDYDZ, 0.0, 0.0, 1.0, DXDYDZ, 0, 1, 0.0 )
+  *SetOrientation( m_1,                        TWOAXES, YX, DXDYDZ, 0.0, 0.0, 1.0, DXDYDZ, 0, -1, 0.0 )
+  *SetOrientation( m_2,                        TWOAXES, YX, DXDYDZ, 0.0, 0.0, 1.0, DXDYDZ, 0, 1, 0.0 )
+  *SetOrientation( m_3,                        TWOAXES, YX, DXDYDZ, 0.0, 0.0, 1.0, DXDYDZ, 0, -1, 0.0 )
+  *SetCoilSpring( sd_sd_left,                 LIN, ds_0.k.value, LIN, ds_0.c.value )
+  *SetCoilSpring( sd_sd_right,                LIN, ds_0.k.value, LIN, ds_0.c.value )
+  *SetCoilSpring( sd_sd_left1,                LIN, ds_0.k.value, LIN, ds_0.c.value )
+  *SetCoilSpring( sd_sd_right1,               LIN, ds_0.k.value, LIN, ds_0.c.value )
+  *SetCoilSpring( sd_sdnew,                   LIN, ds_0.k.value, LIN, ds_0.c.value )
+  *SetCoilSpring( sd_sdnew_right,             LIN, ds_0.k.value, LIN, ds_0.c.value )
+  *SetCoilSpring( sd_sdnew_left1,             LIN, ds_0.k.value, LIN, ds_0.c.value )
+  *SetCoilSpring( sd_sdnew_right1,            LIN, ds_0.k.value, LIN, ds_0.c.value )
+  *SetState( sd_sdnew2_left,             true )
+  *SetCoilSpring( sd_sdnew2_left,             LIN, ds_0.k.value, LIN, ds_0.c.value )
+  *SetCoilSpring( sd_sdnew2_right,            LIN, ds_0.k.value, LIN, ds_0.c.value )
+  *SetCoilSpring( sd_sdnew2_left1,            LIN, ds_0.k.value, LIN, ds_0.c.value )
+  *SetCoilSpring( sd_sdnew2_right1,           LIN, ds_0.k.value, LIN, ds_0.c.value )
+  *SetState( tmplt_wheel_set,            true )
+  *SetState( tmplt_rail,                 true )
+  *SetState( gcyl_0,                     true )
+  *SetState( gcyl_1,                     true )
+  *SetState( gbox_0,                     true )
+  *SetCurveAttributes( crv_wheel,                  , , , -ds_0.wheel_radius.value )
+  *SetBodyIC( b_ws,                       0.0 )
+  *SetBodyICFlag( b_ws,                       false, false )
+  *SetBodyIC( b_ws1,                      0.0 )
+  *SetBodyICFlag( b_ws1,                      false )
+  *SetBodyIC( b_bogie,                    0.0 )
+  *SetBodyICFlag( b_bogie,                    false )
+  *SetReal( ds_0.wheel_radius,          0.3 )
+  *SetPoint( p_ws_cm,                    ds_0.global_offset_x.value, ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetPoint( p_ws_cm1,                   1 + ds_0.global_offset_x.value, ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetPoint( p_ws_left,                  ds_0.global_offset_x.value, 0.5 + ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetPoint( p_ws_right,                 ds_0.global_offset_x.value, -0.5 + ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetPoint( p_ws_left1,                 1 + ds_0.global_offset_x.value, 0.5 + ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetPoint( p_ws_right1,                1 + ds_0.global_offset_x.value, -0.5 + ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetPoint( p_bogie_cm,                 0.5 + ds_0.global_offset_x.value, ds_0.global_offset_y.value, 0.5 + ds_0.global_offset_z.value )
+  *SetPoint( p_sd_left,                  ds_0.global_offset_x.value, 0.5 + ds_0.global_offset_y.value, 0.5 + ds_0.global_offset_z.value )
+  *SetPoint( p_sd_right,                 ds_0.global_offset_x.value, -0.5 + ds_0.global_offset_y.value, 0.5 + ds_0.global_offset_z.value )
+  *SetPoint( p_sd_left1,                 1 + ds_0.global_offset_x.value, 0.5 + ds_0.global_offset_y.value, 0.5 + ds_0.global_offset_z.value )
+  *SetPoint( p_sd_right1,                1 + ds_0.global_offset_x.value, -0.5 + ds_0.global_offset_y.value, 0.5 + ds_0.global_offset_z.value )
+  *SetPoint( p_fix,                      0.5 + ds_0.global_offset_x.value, ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetPoint( p_sdnew_left,               -0.5 + ds_0.global_offset_x.value, 0.5 + ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetPoint( p_sdnew_right,              -0.5 + ds_0.global_offset_x.value, -0.5 + ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetPoint( p_sdnew_left1,              1.5 + ds_0.global_offset_x.value, 0.5 + ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetPoint( p_sdnew_right1,             1.5 + ds_0.global_offset_x.value, -0.5 + ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetPoint( p_sd_new2_left,             ds_0.global_offset_x.value, 1 + ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetPoint( p_sd_new2_right,            ds_0.global_offset_x.value, -1 + ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetPoint( p_sd_new2_left1,            1 + ds_0.global_offset_x.value, 1 + ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetPoint( p_sd_new2_right1,           1 + ds_0.global_offset_x.value, -1 + ds_0.global_offset_y.value, ds_0.global_offset_z.value )
+  *SetReal( ds_0.global_offset_z,       0 )
+  *SetReal( ds_0.global_offset_x,       0 )
+  *SetOption( DS_Gravity.op_gravity,       "On" )
+  *SetReal( ds_0.global_offset_y,       0 )
+  *SetBodyInertia( b_bogie,                    10, 1, 1, 1 )
+  *Set( o_angvel_body_bogie.use_units, false )
+  *SetState( o_angvel_body_bogie,        false )
+  *SetState( o_angvel_body_ws,           false )
+  *SetState( o_angvel_body_ws1,          false )
+  *SetReal( ds_0.k,                     1e3 )
+  *SetBodyInertia( b_ws,                       1, 0.1, 0.1, 0.1 )
+  *SetState( j_orient_rear,              true )
+  *SetState( j_orient_front,             true )
+  *SetBodyInertia( b_ws1,                      1, 0.1, 0.1, 0.1 )
+  *SetReal( ds_0.c,                     100 )
+  *SetActiveAnalysis( NONE )
+  *DefineTemplate( def_tmplt_0 )
+  <Body_Wheel_Set
+     id = "1"
+     label = "wheel_set"
+     body_id = "{b_ws.id}"
+     profile_marker_left_id = "{m_0.id}"
+     profile_marker_right_id = "{m_1.id}"
+     wheel_right_profile_id = "{crv_wheel.id}"
+     global_marker_id = "{Global_Frame.id}"
+  />
+
+  <Body_Wheel_Set
+     id = "2"
+     label = "wheel_set2"
+     body_id = "{b_ws1.id}"
+     profile_marker_left_id = "{m_2.id}"
+     profile_marker_right_id = "{m_3.id}"
+     wheel_right_profile_id = "{crv_wheel.id}"
+     global_marker_id = "{Global_Frame.id}"
+  />
+
+
+<!--                           -->
+  *EndDefine()
+  *DefineTemplate( def_tmplt_1 )
+  <Entity_Rail
+     id = "1"
+     label           = "rail"
+     rail_right_profile_id = "{crv_rail.id}"
+  />
+  *EndDefine()
+  *DefineDataSet( def_ds_0 )
+    *Real( k, "k", EDIT )
+    *Real( c, "c", EDIT )
+    *Real( wheel_radius, "wheel_radius", EDIT )
+    *Real( global_offset_x, "global_offset_x", EDIT )
+    *Real( global_offset_y, "global_offset_y", EDIT )
+    *Real( global_offset_z, "global_offset_z", EDIT )
+  *EndDefine()
+*EndMDL()
+
