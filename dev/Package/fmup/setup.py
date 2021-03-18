@@ -12,9 +12,9 @@ with open("README.md", "r") as fh:
 
 setup(
     name="fmup",
-    version="1.5.9.0",
+    version="1.5.10.0",
     author="iammix",
-    url="https://github.com/redi-eng/fmup",
+    url="https://github.com/redi-eng",
     description="Python Framework that builds FMU files from Python Source Code",
     long_description_content_type="text/markdown",
     keywords="FMI",
