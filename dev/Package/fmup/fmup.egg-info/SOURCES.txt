@@ -1,0 +1,119 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+fmup/__init__.py
+fmup/__mainV2__.py
+fmup/__main__.py
+fmup/_version.py
+fmup/builder.py
+fmup/builderV2.py
+fmup/csvbuilder.py
+fmup/csvbuilderV2.py
+fmup/deploy.py
+fmup/deployV2.py
+fmup/enums.py
+fmup/fmi2slave.py
+fmup/fmi2slaveV2.py
+fmup/osutil.py
+fmup/variables.py
+fmup/variablesV2.py
+fmup.egg-info/PKG-INFO
+fmup.egg-info/SOURCES.txt
+fmup.egg-info/dependency_links.txt
+fmup.egg-info/entry_points.txt
+fmup.egg-info/not-zip-safe
+fmup.egg-info/requires.txt
+fmup.egg-info/top_level.txt
+fmup/defs/__init__.py
+fmup/defs/binariesfolder.py
+fmup/defs/generaefmu.py
+fmup/defs/master.py
+fmup/defs/master_test.py
+fmup/defs/scriptfolder.py
+fmup/defs/xmlparser.py
+fmup/defs/xmlvalidator.py
+fmup/defs/zipfmu.py
+fmup/fmup-export/.clang-format
+fmup/fmup-export/CMakeLists.txt
+fmup/fmup-export/.vs/CMake Overview
+fmup/fmup-export/.vs/ProjectSettings.json
+fmup/fmup-export/.vs/VSWorkspaceState.json
+fmup/fmup-export/.vs/cmake.db
+fmup/fmup-export/.vs/slnx.sqlite
+fmup/fmup-export/.vs/fmup-export/v16/.suo
+fmup/fmup-export/.vs/fmup-export/v16/Browse.VC.db
+fmup/fmup-export/.vs/fmup-export/v16/ipch/AutoPCH/40929843b3a42114/PYSLAVEINSTANCE.ipch
+fmup/fmup-export/.vs/fmup-export/v16/ipch/AutoPCH/84c62e6945067692/PYSLAVEINSTANCE.ipch
+fmup/fmup-export/.vs/fmup-export/v16/ipch/AutoPCH/878970c7cafb1a95/CPPFMU_CS.ipch
+fmup/fmup-export/cpp/PySlaveInstance.cpp
+fmup/fmup-export/cpp/cppfmu_cs.cpp
+fmup/fmup-export/cpp/fmi_functions.cpp
+fmup/fmup-export/cpp/pylog.cpp
+fmup/fmup-export/headers/cppfmu/cppfmu_common.hpp
+fmup/fmup-export/headers/cppfmu/cppfmu_cs.hpp
+fmup/fmup-export/headers/fmi/fmi2FunctionTypes.h
+fmup/fmup-export/headers/fmi/fmi2Functions.h
+fmup/fmup-export/headers/fmi/fmi2TypesPlatform.h
+fmup/fmup-export/headers/fmup/PySlaveInstance.hpp
+fmup/fmup-export/headers/fmup/PyState.hpp
+fmup/fmup-export/out/build/x64-Debug (default)/.ninja_deps
+fmup/fmup-export/out/build/x64-Debug (default)/.ninja_log
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeCache.txt
+fmup/fmup-export/out/build/x64-Debug (default)/VSInheritEnvironments.txt
+fmup/fmup-export/out/build/x64-Debug (default)/build.ninja
+fmup/fmup-export/out/build/x64-Debug (default)/cmake_install.cmake
+fmup/fmup-export/out/build/x64-Debug (default)/rules.ninja
+fmup/fmup-export/out/build/x64-Debug (default)/.cmake/api/v1/query/client-MicrosoftVS/query.json
+fmup/fmup-export/out/build/x64-Debug (default)/.cmake/api/v1/reply/cache-v2-4208a1dd9ffd9417490a.json
+fmup/fmup-export/out/build/x64-Debug (default)/.cmake/api/v1/reply/cmakeFiles-v1-09f37f325f95bcf8ff76.json
+fmup/fmup-export/out/build/x64-Debug (default)/.cmake/api/v1/reply/codemodel-v2-8664bd43b7384f26eb83.json
+fmup/fmup-export/out/build/x64-Debug (default)/.cmake/api/v1/reply/index-2020-06-25T07-31-36-0220.json
+fmup/fmup-export/out/build/x64-Debug (default)/.cmake/api/v1/reply/target-fmup-export-Debug-ae7da30eda3dae7c3778.json
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/CMakeOutput.log
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/TargetDirectories.txt
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/cmake.check_cache
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/3.17.20032601-MSVC_2/CMakeCCompiler.cmake
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/3.17.20032601-MSVC_2/CMakeCXXCompiler.cmake
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/3.17.20032601-MSVC_2/CMakeDetermineCompilerABI_C.bin
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/3.17.20032601-MSVC_2/CMakeDetermineCompilerABI_CXX.bin
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/3.17.20032601-MSVC_2/CMakeRCCompiler.cmake
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/3.17.20032601-MSVC_2/CMakeSystem.cmake
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/3.17.20032601-MSVC_2/CompilerIdC/CMakeCCompilerId.c
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/3.17.20032601-MSVC_2/CompilerIdC/CMakeCCompilerId.exe
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/3.17.20032601-MSVC_2/CompilerIdC/CMakeCCompilerId.obj
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/3.17.20032601-MSVC_2/CompilerIdCXX/CMakeCXXCompilerId.cpp
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/3.17.20032601-MSVC_2/CompilerIdCXX/CMakeCXXCompilerId.exe
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/3.17.20032601-MSVC_2/CompilerIdCXX/CMakeCXXCompilerId.obj
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/ShowIncludes/foo.h
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/ShowIncludes/main.c
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/ShowIncludes/main.obj
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/fmup-export.dir/exports.def.objs
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/fmup-export.dir/vc140.pdb
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/fmup-export.dir/cpp/cppfmu_cs.cpp.obj
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/fmup-export.dir/cpp/fmi_functions.cpp.obj
+fmup/fmup-export/out/build/x64-Debug (default)/CMakeFiles/fmup-export.dir/cpp/pylog.cpp.obj
+fmup/fmup-export/out/build/x64-Debug (default)/Testing/Temporary/LastTest.log
+fmup/resources/binaries/win64/fmup-export.dll
+fmup/testV2/__init__.py
+fmup/testV2/pythonslave.py
+fmup/testV2/test_builder.py
+fmup/testV2/test_csvslave.py
+fmup/testV2/test_deploy.py
+fmup/testV2/test_fmi2slave.py
+fmup/testV2/test_integration.py
+fmup/testV2/test_logger.py
+fmup/testV2/test_variables.py
+fmup/testV2/utils.py
+fmup/tests/__init__.py
+fmup/tests/csvdemo.csv
+fmup/tests/dependfile.py
+fmup/tests/test_builder.py
+fmup/tests/test_csvslave.py
+fmup/tests/test_deploy.py
+fmup/tests/test_fmi2slave.py
+fmup/tests/test_integration.py
+fmup/tests/test_logger.py
+fmup/tests/test_variables.py
+fmup/tests/utils.py
