@@ -1,0 +1,24 @@
+version: 2.1
+jobs:
+  build_test:
+    docker:
+      - image: circleci/python:3.6.4
+    steps:
+      - checkout  # checkout source code to working directory
+      - run:
+          command: |  # create whl and use pipenv to install dependencies
+            sudo pip install pipenv
+
+            python -m pip install --upgrade pip
+            pipenv install Cython
+            python -m pip install --user --upgrade setuptools
+            python setup.py sdist bdist_wheel
+      - run:
+          command: |  # Run test suite
+            pipenv run pytest
+
+
+workflows:
+  build_library:
+    jobs:
+      - build_test
