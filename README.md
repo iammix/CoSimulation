@@ -1,6 +1,7 @@
 ![Library Build](https://github.com/iammix/CoSimulation/workflows/Library%20Build/badge.svg)
 
 # Co-Simulation Project
+[![CircleCI](https://circleci.com/gh/iammix/CoSimulation/tree/master.svg?style=svg&circle-token=bf21c60cf35ade09fc040b470f01cd58fa6c3609)](https://circleci.com/gh/iammix/CoSimulation/tree/master)
 
 This Repository holds all the nessecery data and code blocks for the development of a Python Library that generates FMU files from Python source code model. 
 All the changes are logged.
