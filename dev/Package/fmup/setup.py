@@ -6,15 +6,17 @@ except ImportError:
     from distutils.core import setup
     from distutils.extension import Extension
     from Cython.Build import cythonize
+from fmup import _version
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
     name="fmup",
-    version="1.5.10.0",
-    author="iammix",
-    url="https://github.com/redi-eng",
+    version=_version.__version__,
+    author="Konstantinos Mixios",
+    author_email="k.mixios@gmail.com",
+    url="https://github.com/iammix/",
     description="Python Framework that builds FMU files from Python Source Code",
     long_description_content_type="text/markdown",
     keywords="FMI",
